@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedText from '@/components/AnimatedText';
@@ -10,7 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 // List of tools with their logos
 const tools = [
   { name: 'Gmail', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png' },
-  { name: 'Hubspot', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/HubSpot_Logo.svg/1280px-HubSpot_Logo.svg.png' },  // Updated Hubspot logo URL
+  { name: 'Microsoft 365', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Microsoft_365_logo.svg/2048px-Microsoft_365_logo.svg.png' },
   { name: 'Notion', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png' },
   { name: 'Slack', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png' },
   { name: 'Google Drive', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/2295px-Google_Drive_icon_%282020%29.svg.png' },
@@ -23,7 +22,59 @@ const tools = [
   { name: 'Google Calendar', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/640px-Google_Calendar_icon_%282020%29.svg.png' },
   { name: 'Stripe', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png' },
   { name: 'Shopify', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/1280px-Shopify_logo_2018.svg.png' },
-  { name: 'Twilio', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Twilio-logo-red.svg/1280px-Twilio-logo-red.svg.png' }
+  { name: 'Twilio', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Twilio-logo-red.svg/1280px-Twilio-logo-red.svg.png' },
+  { name: 'Dropbox', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Dropbox_logo.svg/1200px-Dropbox_logo.svg.png' },
+  { name: 'Adobe', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adobe_Systems_logo_and_wordmark.svg/1200px-Adobe_Systems_logo_and_wordmark.svg.png' },
+  { name: 'AWS', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png' },
+  { name: 'Azure', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/1200px-Microsoft_Azure_Logo.svg.png' },
+  { name: 'Google Cloud', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Google_Cloud_logo.svg/1200px-Google_Cloud_logo.svg.png' },
+  { name: 'Figma', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1200px-Figma-logo.svg.png' },
+  { name: 'Trello', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Trello-logo-blue.svg/1200px-Trello-logo-blue.svg.png' },
+  { name: 'Zoom', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Zoom_logo.svg/1200px-Zoom_logo.svg.png' },
+  { name: 'Discord', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Discord_mark.svg/1200px-Discord_mark.svg.png' },
+  { name: 'LinkedIn', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png' },
+  { name: 'Twitter', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/1200px-Logo_of_Twitter.svg.png' },
+  { name: 'Facebook', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png' },
+  { name: 'Instagram', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png' },
+  { name: 'YouTube', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1200px-YouTube_full-color_icon_%282017%29.svg.png' },
+  { name: 'WordPress', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/WordPress_blue_logo.svg/1200px-WordPress_blue_logo.svg.png' },
+  { name: 'Squarespace', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Squarespace_Logo.svg/1200px-Squarespace_Logo.svg.png' },
+  { name: 'Wix', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/WixLogo.svg/1200px-WixLogo.svg.png' },
+  { name: 'Mailchimp', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Mailchimp_logo.svg/1200px-Mailchimp_logo.svg.png' },
+  { name: 'Spotify', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1200px-Spotify_logo_without_text.svg.png' },
+  { name: 'Netflix', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png' },
+  { name: 'Canva', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/1200px-Canva_icon_2021.svg.png' },
+  { name: 'PayPal', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png' },
+  { name: 'Square', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Square_Cash_app_logo.svg/1200px-Square_Cash_app_logo.svg.png' },
+  { name: 'Atlassian', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Atlassian-logo.svg/1200px-Atlassian-logo.svg.png' },
+  { name: 'Zapier', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Zapier_logo.svg/1200px-Zapier_logo.svg.png' },
+  { name: 'Airtable', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Airtable-logo-blue.svg/1200px-Airtable-logo-blue.svg.png' },
+  { name: 'QuickBooks', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Intuit_QuickBooks_logo.svg/1200px-Intuit_QuickBooks_logo.svg.png' },
+  { name: 'Xero', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Xero_software_logo.svg/1200px-Xero_software_logo.svg.png' },
+  { name: 'Freshworks', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Freshworks_logo.svg/1200px-Freshworks_logo.svg.png' },
+  { name: 'Monday', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Monday.com_logo.svg/1200px-Monday.com_logo.svg.png' },
+  { name: 'ClickUp', logo: 'https://clickup.com/brand/clickup-symbol_full-color.svg' },
+  { name: 'Webflow', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Webflow_logo.svg/1200px-Webflow_logo.svg.png' },
+  { name: 'Calendly', logo: 'https://cdn.worldvectorlogo.com/logos/calendly.svg' },
+  { name: 'Intercom', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Intercom_logo.svg/1200px-Intercom_logo.svg.png' },
+  { name: 'Okta', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Okta_logo.svg/1200px-Okta_logo.svg.png' },
+  { name: 'Auth0', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Auth0_logo.svg/1200px-Auth0_logo.svg.png' },
+  { name: 'SendGrid', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sendgrid_logo.svg/1200px-Sendgrid_logo.svg.png' },
+  { name: 'Mailgun', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Mailgun_Logo.png/1200px-Mailgun_Logo.png' },
+  { name: 'Amplitude', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Amplitude_logo.svg/1200px-Amplitude_logo.svg.png' },
+  { name: 'Mixpanel', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Mixpanel_logo.svg/1200px-Mixpanel_logo.svg.png' },
+  { name: 'Google Analytics', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Google_Analytics_logo.svg/1200px-Google_Analytics_logo.svg.png' },
+  { name: 'Tableau', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Tableau_Logo.png/1200px-Tableau_Logo.png' },
+  { name: 'Power BI', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Power_bi_logo_black.svg/1200px-Power_bi_logo_black.svg.png' },
+  { name: 'Looker', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Looker_logo.svg/1200px-Looker_logo.svg.png' },
+  { name: 'Snowflake', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Snowflake_Logo.svg/1200px-Snowflake_Logo.svg.png' },
+  { name: 'MongoDB', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/1200px-MongoDB_Logo.svg.png' },
+  { name: 'PostgreSQL', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png' },
+  { name: 'MySQL', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1200px-MySQL_logo.svg.png' },
+  { name: 'Redis', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png' },
+  { name: 'HubSpot', logo: 'https://cdn2.hubspot.net/hubfs/53/HubSpot%20Logo.png' },
+  { name: 'Miro', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Miro_Logo.svg/1200px-Miro_Logo.svg.png' },
+  { name: 'Fivetran', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Fivetran_logo.svg/1200px-Fivetran_logo.svg.png' }
 ];
 
 const Index = () => {
@@ -315,23 +366,24 @@ await agent.execute(
               </div>
             </ScrollReveal>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-4">
               {tools.map((tool, index) => (
                 <ScrollReveal 
                   key={tool.name} 
-                  delay={100 * index} 
-                  direction={index % 2 === 0 ? 'scale' : 'rotate'}
-                  duration={600}
+                  delay={50 * (index % 10)} 
+                  direction={(index % 4 === 0) ? 'scale' : (index % 4 === 1) ? 'up' : (index % 4 === 2) ? 'rotate' : 'flip'}
+                  duration={400}
                 >
-                  <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center h-40 hover:shadow-lg transition-all duration-300 transform hover:translate-y-[-5px] group">
-                    <div className="mb-4 h-14 flex items-center justify-center">
+                  <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm p-3 flex flex-col items-center justify-center h-24 hover:shadow-md transition-all duration-300 transform hover:translate-y-[-3px] group">
+                    <div className="mb-2 h-10 flex items-center justify-center">
                       <img 
                         src={tool.logo} 
                         alt={`${tool.name} logo`} 
-                        className="max-h-full max-w-full object-contain filter group-hover:brightness-110 transition-all"
+                        className="max-h-full max-w-full object-contain filter saturate-0 opacity-80 group-hover:opacity-100 transition-all"
+                        style={{ filter: 'brightness(0.9) contrast(0.9) saturate(0) sepia(0.2) hue-rotate(240deg) brightness(1.2)' }}
                       />
                     </div>
-                    <span className="text-lg font-medium group-hover:text-primary transition-colors text-center">{tool.name}</span>
+                    <span className="text-xs font-medium group-hover:text-primary transition-colors text-center truncate w-full">{tool.name}</span>
                   </div>
                 </ScrollReveal>
               ))}
