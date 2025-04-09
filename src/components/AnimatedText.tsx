@@ -29,7 +29,8 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   highlightColor = 'text-primary',
   duration = 600,
 }) => {
-  const containerRef = useRef<HTMLElement>(null);
+  // Fix: Use a more specific ref type that matches the HTML element that could be rendered
+  const containerRef = useRef<HTMLDivElement | null>(null);
   
   useEffect(() => {
     if (animationType === 'wave' && containerRef.current) {
@@ -173,10 +174,13 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     }
   };
 
+  // Fix: Create a wrapper div with the ref instead of applying it directly to the dynamic tag
   return (
-    <Tag ref={containerRef} className={cn("", className)}>
-      {renderAnimatedText()}
-    </Tag>
+    <div ref={containerRef} className={cn("", className)}>
+      <Tag className="contents">
+        {renderAnimatedText()}
+      </Tag>
+    </div>
   );
 };
 
