@@ -7,6 +7,25 @@ import { Button } from '@/components/ui/button';
 import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
+// List of tools with their logos
+const tools = [
+  { name: 'Gmail', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png' },
+  { name: 'Hubspot', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png' },
+  { name: 'Notion', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png' },
+  { name: 'Slack', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png' },
+  { name: 'Google Drive', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/2295px-Google_Drive_icon_%282020%29.svg.png' },
+  { name: 'Salesforce', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/1280px-Salesforce.com_logo.svg.png' },
+  { name: 'Jira', logo: 'https://wac-cdn.atlassian.com/dam/jcr:b544631f-b225-441b-9e05-57b7fd0d495b/Jira%20Software@2x-icon-blue.png' },
+  { name: 'Asana', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Asana_logo.svg/1280px-Asana_logo.svg.png' },
+  { name: 'Zendesk', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Zendesk_logo.svg/2560px-Zendesk_logo.svg.png' },
+  { name: 'Microsoft Teams', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/1200px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png' },
+  { name: 'GitHub', logo: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' },
+  { name: 'Google Calendar', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/640px-Google_Calendar_icon_%282020%29.svg.png' },
+  { name: 'Stripe', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png' },
+  { name: 'Shopify', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/1280px-Shopify_logo_2018.svg.png' },
+  { name: 'Twilio', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Twilio-logo-red.svg/1280px-Twilio-logo-red.svg.png' }
+];
+
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   
@@ -259,7 +278,7 @@ await agent.execute(
                 <ScrollReveal 
                   key={index} 
                   delay={100 * index} 
-                  direction={["scale", "up", "flip"][index % 3]} 
+                  direction={["scale", "up", "flip"][index % 3] as "scale" | "up" | "flip"}
                 >
                   <Card className="h-full overflow-hidden group relative hover:shadow-lg transition-shadow duration-300 border border-border">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -297,15 +316,22 @@ await agent.execute(
             </ScrollReveal>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-              {['Gmail', 'Hubspot', 'Notion', 'Slack', 'Google Drive', 'Salesforce', 'Jira', 'Asana', 'Zendesk', 'Microsoft Teams'].map((tool, index) => (
+              {tools.map((tool, index) => (
                 <ScrollReveal 
-                  key={tool} 
+                  key={tool.name} 
                   delay={100 * index} 
                   direction={index % 2 === 0 ? 'scale' : 'rotate'}
                   duration={600}
                 >
-                  <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center h-32 hover:shadow-lg transition-all duration-300 transform hover:translate-y-[-5px] group">
-                    <span className="text-lg font-medium group-hover:text-primary transition-colors">{tool}</span>
+                  <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center h-40 hover:shadow-lg transition-all duration-300 transform hover:translate-y-[-5px] group">
+                    <div className="mb-4 h-14 flex items-center justify-center">
+                      <img 
+                        src={tool.logo} 
+                        alt={`${tool.name} logo`} 
+                        className="max-h-full max-w-full object-contain filter group-hover:brightness-110 transition-all"
+                      />
+                    </div>
+                    <span className="text-lg font-medium group-hover:text-primary transition-colors text-center">{tool.name}</span>
                   </div>
                 </ScrollReveal>
               ))}

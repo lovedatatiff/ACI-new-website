@@ -32,29 +32,6 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const getInitialStyles = () => {
-    switch (direction) {
-      case 'up':
-        return `opacity-0 translate-y-[${distance}px]`;
-      case 'down':
-        return `opacity-0 -translate-y-[${distance}px]`;
-      case 'left':
-        return `opacity-0 translate-x-[${distance}px]`;
-      case 'right':
-        return `opacity-0 -translate-x-[${distance}px]`;
-      case 'scale':
-        return `opacity-0 scale-[${scale}]`;
-      case 'rotate':
-        return `opacity-0 rotate-[${rotate}deg]`;
-      case 'flip':
-        return `opacity-0 rotateX-[90deg]`;
-      case 'none':
-        return 'opacity-0';
-      default:
-        return `opacity-0 translate-y-[${distance}px]`;
-    }
-  };
-
   useEffect(() => {
     const currentRef = ref.current;
     const observer = new IntersectionObserver(
@@ -86,22 +63,6 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       }
     };
   }, [threshold, delay, once]);
-
-  const getTransformStyles = () => {
-    if (direction === 'scale') {
-      return isVisible ? 'scale-100' : `scale-[${scale}]`;
-    } else if (direction === 'rotate') {
-      return isVisible ? 'rotate-0' : `rotate-[${rotate}deg]`;
-    } else if (direction === 'flip') {
-      return isVisible ? 'rotateX-0' : 'rotateX-[90deg]';
-    } else if (direction === 'up' || direction === 'down') {
-      return isVisible ? 'translate-y-0' : direction === 'up' ? `translate-y-[${distance}px]` : `-translate-y-[${distance}px]`;
-    } else if (direction === 'left' || direction === 'right') {
-      return isVisible ? 'translate-x-0' : direction === 'left' ? `translate-x-[${distance}px]` : `-translate-x-[${distance}px]`;
-    } else {
-      return '';
-    }
-  };
 
   return (
     <div

@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface Particle {
   x: number;
@@ -9,6 +9,9 @@ interface Particle {
   speedY: number;
   color: string;
   opacity: number;
+  shape: 'circle' | 'square' | 'triangle' | 'star';
+  rotation: number;
+  rotationSpeed: number;
 }
 
 interface AnimatedParticlesProps {
@@ -32,6 +35,31 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0, radius: 100 });
   const animationRef = useRef<number | null>(null);
+  const scrollRef = useRef(0);
+  const [mode, setMode] = useState<'sticks' | 'squares' | 'triangles' | 'stars'>('sticks');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollRef.current = window.scrollY;
+      
+      // Change shape based on scroll position
+      const windowHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercentage = window.scrollY / windowHeight;
+      
+      if (scrollPercentage < 0.25) {
+        setMode('sticks');
+      } else if (scrollPercentage < 0.5) {
+        setMode('squares');
+      } else if (scrollPercentage < 0.75) {
+        setMode('triangles');
+      } else {
+        setMode('stars');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -57,6 +85,7 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
     const initParticles = () => {
       particlesRef.current = [];
       for (let i = 0; i < count; i++) {
+        const shape = Math.random() > 0.5 ? 'circle' : 'square';
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -65,8 +94,71 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
           speedY: (Math.random() - 0.5) * maxSpeed,
           color,
           opacity: Math.random() * 0.5 + 0.1,
+          shape,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 2
         });
       }
+    };
+
+    // Draw a particle based on its shape
+    const drawParticle = (ctx: CanvasRenderingContext2D, particle: Particle) => {
+      ctx.save();
+      ctx.translate(particle.x, particle.y);
+      ctx.rotate((particle.rotation * Math.PI) / 180);
+      
+      const fillColor = color.replace(')', `, ${particle.opacity})`).replace('rgb', 'rgba');
+      ctx.fillStyle = fillColor;
+
+      // Shape drawing logic based on current mode
+      if (mode === 'sticks') {
+        // Draw lines
+        ctx.beginPath();
+        ctx.rect(-particle.size * 3, -particle.size / 3, particle.size * 6, particle.size / 1.5);
+        ctx.fill();
+      } else if (mode === 'squares') {
+        // Draw squares
+        ctx.beginPath();
+        ctx.rect(-particle.size, -particle.size, particle.size * 2, particle.size * 2);
+        ctx.fill();
+      } else if (mode === 'triangles') {
+        // Draw triangles
+        ctx.beginPath();
+        ctx.moveTo(0, -particle.size);
+        ctx.lineTo(particle.size, particle.size);
+        ctx.lineTo(-particle.size, particle.size);
+        ctx.closePath();
+        ctx.fill();
+      } else if (mode === 'stars') {
+        // Draw stars
+        const spikes = 5;
+        const outerRadius = particle.size;
+        const innerRadius = particle.size / 2;
+        
+        ctx.beginPath();
+        let rot = (Math.PI / 2) * 3;
+        const step = Math.PI / spikes;
+        
+        for (let i = 0; i < spikes; i++) {
+          ctx.lineTo(
+            Math.cos(rot) * outerRadius + 0,
+            Math.sin(rot) * outerRadius + 0
+          );
+          rot += step;
+          
+          ctx.lineTo(
+            Math.cos(rot) * innerRadius + 0,
+            Math.sin(rot) * innerRadius + 0
+          );
+          rot += step;
+        }
+        
+        ctx.lineTo(0, -outerRadius);
+        ctx.closePath();
+        ctx.fill();
+      }
+      
+      ctx.restore();
     };
 
     // Update and draw particles
@@ -78,6 +170,7 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
         // Move particles
         particle.x += particle.speedX;
         particle.y += particle.speedY;
+        particle.rotation += particle.rotationSpeed;
         
         // Wrap particles at screen edges
         if (particle.x > canvas.width) particle.x = 0;
@@ -100,11 +193,8 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
           }
         }
         
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = color.replace(')', `, ${particle.opacity})`).replace('rgb', 'rgba');
-        ctx.fill();
+        // Draw particle with the current shape
+        drawParticle(ctx, particle);
       });
       
       // Connect particles with lines
@@ -149,7 +239,7 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [count, color, maxSize, maxSpeed, interactive]);
+  }, [count, color, maxSize, maxSpeed, interactive, mode]);
 
   return (
     <canvas
