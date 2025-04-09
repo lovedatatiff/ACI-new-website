@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedText from '@/components/AnimatedText';
 import AnimatedParticles from '@/components/AnimatedParticles';
+import PricingSection from '@/components/PricingSection';
 import { Button } from '@/components/ui/button';
 import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -161,6 +162,9 @@ const Index = () => {
               </a>
               <a href="#tools" className="text-muted-foreground hover:text-foreground transition-colors">
                 Integrations
+              </a>
+              <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+                Pricing
               </a>
               <a href="https://www.aci.dev/docs/introduction/overview" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                 Documentation
@@ -443,6 +447,8 @@ await agent.execute(
             </div>
           </div>
         </section>
+        
+        <PricingSection />
         
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-600 to-blue-600 opacity-90"></div>
