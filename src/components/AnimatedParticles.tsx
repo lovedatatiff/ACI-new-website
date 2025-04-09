@@ -15,8 +15,6 @@ interface Particle {
   hue: number;
   saturation: number;
   lightness: number;
-  pulseSpeed: number;
-  pulseDirection: boolean;
 }
 
 interface AnimatedParticlesProps {
@@ -33,7 +31,7 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
   count = 50,
   color = '#646cff',
   maxSize = 5,
-  maxSpeed = 0.5,
+  maxSpeed = 1,
   interactive = true,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -41,30 +39,40 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
   const mouseRef = useRef({ x: 0, y: 0, radius: 100 });
   const animationRef = useRef<number | null>(null);
   const scrollRef = useRef(0);
-  const [mode, setMode] = useState<'sticks' | 'nebula'>('sticks');
+  const [mode, setMode] = useState<'circle' | 'square' | 'triangle' | 'star' | 'hexagon' | 'spiral' | 'custom'>('circle');
   const [hueRotation, setHueRotation] = useState(0);
   const [animationIntensity, setAnimationIntensity] = useState(1);
 
-  // Track scroll position with reduced effect
+  // Track scroll position
   useEffect(() => {
     const handleScroll = () => {
       scrollRef.current = window.scrollY;
       
-      // Get scroll percentage with much more subtle effect
+      // Get scroll percentage
       const windowHeight = document.body.scrollHeight - window.innerHeight;
       const scrollPercentage = window.scrollY / windowHeight;
       
-      // Update animation intensity with reduced range (only slight change)
-      setAnimationIntensity(0.8 + scrollPercentage * 0.4); // Much less variation
+      // Update animation intensity
+      setAnimationIntensity(0.5 + scrollPercentage * 1.5);
       
-      // Update color hue based on scroll, but more subtle
-      setHueRotation(scrollPercentage * 120); // Reduced from 360 to 120
+      // Update color hue based on scroll
+      setHueRotation(scrollPercentage * 360);
       
-      // Only switch between two modes for less distraction
-      if (scrollPercentage > 0.5) {
-        setMode('nebula');
+      // Update mode based on scroll position
+      if (scrollPercentage < 0.14) {
+        setMode('circle');
+      } else if (scrollPercentage < 0.28) {
+        setMode('square');
+      } else if (scrollPercentage < 0.42) {
+        setMode('triangle');
+      } else if (scrollPercentage < 0.56) {
+        setMode('star');
+      } else if (scrollPercentage < 0.70) {
+        setMode('hexagon');
+      } else if (scrollPercentage < 0.84) {
+        setMode('spiral');
       } else {
-        setMode('sticks');
+        setMode('custom');
       }
     };
 
@@ -96,23 +104,20 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
     const initParticles = () => {
       particlesRef.current = [];
       for (let i = 0; i < count; i++) {
-        const shape = Math.random() > 0.5 ? 'circle' : 'square';
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * maxSize + 1,
-          speedX: (Math.random() - 0.5) * maxSpeed * 0.7, // Reduced speed
-          speedY: (Math.random() - 0.5) * maxSpeed * 0.7, // Reduced speed
+          speedX: (Math.random() - 0.5) * maxSpeed,
+          speedY: (Math.random() - 0.5) * maxSpeed,
           color,
-          opacity: Math.random() * 0.3 + 0.1, // Reduced opacity
-          shape,
+          opacity: Math.random() * 0.5 + 0.1,
+          shape: 'circle',
           rotation: Math.random() * 360,
-          rotationSpeed: (Math.random() - 0.5) * 1, // Reduced rotation
-          hue: Math.random() * 40 - 20, // Reduced color variation
-          saturation: 70 + Math.random() * 20,
+          rotationSpeed: (Math.random() - 0.5) * 2,
+          hue: Math.random() * 60 - 30,
+          saturation: 70 + Math.random() * 30,
           lightness: 50 + Math.random() * 20,
-          pulseSpeed: 0.01 + Math.random() * 0.02, // Slower pulse
-          pulseDirection: Math.random() > 0.5
         });
       }
     };
@@ -123,34 +128,89 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
       ctx.translate(particle.x, particle.y);
       ctx.rotate((particle.rotation * Math.PI) / 180);
       
-      // Apply hue rotation based on scroll position (subtler)
+      // Apply hue rotation based on scroll position
       const adjustedHue = (parseInt(color.slice(1, 3), 16) * 1.4 + hueRotation + particle.hue) % 360;
-      const fillColor = `hsla(${adjustedHue}, ${particle.saturation}%, ${particle.lightness}%, ${particle.opacity * 0.7})`; // Reduced opacity
-      ctx.fillStyle = fillColor;
+      ctx.fillStyle = `hsla(${adjustedHue}, ${particle.saturation}%, ${particle.lightness}%, ${particle.opacity})`;
       
-      // Less intense pulse
-      const pulseFactor = mode === 'nebula' ? 
-        1 + Math.sin(Date.now() * particle.pulseSpeed * 0.0005) * 0.3 : // Reduced pulse
-        1;
-      const size = particle.size * pulseFactor * animationIntensity;
+      const size = particle.size * animationIntensity;
 
-      // Shape drawing logic with simplified options
-      if (mode === 'sticks') {
-        // Draw simpler sticks
-        const length = size * 4;
-        ctx.beginPath();
-        ctx.rect(-length / 2, -size / 4, length, size / 2);
-        ctx.fill();
-      } else if (mode === 'nebula') {
-        // Create a subtler nebula-like effect
-        const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size * 2.5);
-        gradient.addColorStop(0, `hsla(${adjustedHue}, ${particle.saturation}%, ${particle.lightness + 10}%, ${particle.opacity * 1.2})`);
-        gradient.addColorStop(1, `hsla(${adjustedHue}, ${particle.saturation - 20}%, ${particle.lightness - 10}%, 0)`);
-        
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(0, 0, size * 2.5, 0, Math.PI * 2);
-        ctx.fill();
+      // Shape drawing logic
+      switch (mode) {
+        case 'circle':
+          ctx.beginPath();
+          ctx.arc(0, 0, size, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+        case 'square':
+          ctx.fillRect(-size, -size, size * 2, size * 2);
+          break;
+        case 'triangle':
+          ctx.beginPath();
+          ctx.moveTo(0, -size);
+          ctx.lineTo(-size, size);
+          ctx.lineTo(size, size);
+          ctx.closePath();
+          ctx.fill();
+          break;
+        case 'star':
+          const spikes = 5;
+          const outerRadius = size;
+          const innerRadius = size / 2;
+          
+          ctx.beginPath();
+          for (let i = 0; i < spikes * 2; i++) {
+            const radius = i % 2 === 0 ? outerRadius : innerRadius;
+            const angle = (Math.PI * i) / spikes - Math.PI / 2;
+            if (i === 0) {
+              ctx.moveTo(Math.cos(angle) * radius, Math.sin(angle) * radius);
+            } else {
+              ctx.lineTo(Math.cos(angle) * radius, Math.sin(angle) * radius);
+            }
+          }
+          ctx.closePath();
+          ctx.fill();
+          break;
+        case 'hexagon':
+          ctx.beginPath();
+          for (let i = 0; i < 6; i++) {
+            const angle = (Math.PI * 2 * i) / 6;
+            const x = Math.cos(angle) * size;
+            const y = Math.sin(angle) * size;
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+          ctx.closePath();
+          ctx.fill();
+          break;
+        case 'spiral':
+          ctx.beginPath();
+          for (let i = 0; i < 200; i++) {
+            const angle = 0.1 * i;
+            const radius = 0.05 * i * size / 5;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+          ctx.stroke();
+          break;
+        case 'custom':
+          // Create a radial gradient
+          const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size * 3);
+          gradient.addColorStop(0, `hsla(${adjustedHue}, ${particle.saturation}%, ${particle.lightness + 20}%, ${particle.opacity * 1.5})`);
+          gradient.addColorStop(1, `hsla(${adjustedHue}, ${particle.saturation - 20}%, ${particle.lightness - 20}%, 0)`);
+          
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(0, 0, size * 3, 0, Math.PI * 2);
+          ctx.fill();
+          break;
       }
       
       ctx.restore();
@@ -162,20 +222,10 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
       
       // Update and draw particles
       particlesRef.current.forEach((particle) => {
-        // Move particles with very gentle speed variation based on mode
-        const speedMultiplier = mode === 'nebula' ? 0.7 : 1;
-                                
-        particle.x += particle.speedX * animationIntensity * speedMultiplier * 0.8; // Reduced overall speed
-        particle.y += particle.speedY * animationIntensity * speedMultiplier * 0.8; // Reduced overall speed
-        particle.rotation += particle.rotationSpeed * animationIntensity * 0.5; // Reduced rotation
-        
-        // Pulse the opacity for nebula mode (gentler)
-        if (mode === 'nebula') {
-          particle.opacity = Math.max(0.05, Math.min(0.5, particle.opacity + (particle.pulseDirection ? 0.001 : -0.001)));
-          if (particle.opacity >= 0.5 || particle.opacity <= 0.05) {
-            particle.pulseDirection = !particle.pulseDirection;
-          }
-        }
+        // Move particles
+        particle.x += particle.speedX * animationIntensity;
+        particle.y += particle.speedY * animationIntensity;
+        particle.rotation += particle.rotationSpeed * animationIntensity;
         
         // Wrap particles at screen edges
         if (particle.x > canvas.width) particle.x = 0;
@@ -183,7 +233,7 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
         if (particle.y > canvas.height) particle.y = 0;
         else if (particle.y < 0) particle.y = canvas.height;
         
-        // Interactive effect with mouse (preserving this since you liked it)
+        // Interactive effect with mouse
         if (interactive) {
           const dx = mouseRef.current.x - particle.x;
           const dy = mouseRef.current.y - particle.y;
@@ -193,7 +243,7 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
             const angle = Math.atan2(dy, dx);
             const force = (mouseRef.current.radius - distance) / mouseRef.current.radius;
             
-            if (mode === 'nebula') {
+            if (mode === 'custom') {
               // For nebula, particles are attracted to mouse
               particle.x += Math.cos(angle) * force * 2;
               particle.y += Math.sin(angle) * force * 2;
@@ -209,18 +259,18 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
         drawParticle(ctx, particle);
       });
       
-      // Connect particles with lines (thinner, more subtle)
-      if (mode === 'sticks') {
+      // Connect particles with lines
+      if (mode !== 'custom') {
         connectParticles(ctx);
       }
       
       animationRef.current = requestAnimationFrame(animate);
     };
     
-    // Draw lines between nearby particles (more subtle)
+    // Draw lines between nearby particles
     const connectParticles = (ctx: CanvasRenderingContext2D) => {
-      const maxDistance = 100; // Reduced distance
-                          
+      const maxDistance = 150;
+      
       for (let i = 0; i < particlesRef.current.length; i++) {
         for (let j = i + 1; j < particlesRef.current.length; j++) {
           const dx = particlesRef.current[i].x - particlesRef.current[j].x;
@@ -228,12 +278,12 @@ const AnimatedParticles: React.FC<AnimatedParticlesProps> = ({
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < maxDistance) {
-            const opacity = (1 - (distance / maxDistance)) * 0.15; // Reduced opacity
-            // Apply hue rotation to connections too (subtler)
+            const opacity = (1 - (distance / maxDistance)) * 0.5;
+            // Apply hue rotation to connections too
             const adjustedHue = (parseInt(color.slice(1, 3), 16) * 1.4 + hueRotation) % 360;
             ctx.beginPath();
-            ctx.strokeStyle = `hsla(${adjustedHue}, 70%, 60%, ${opacity})`; // More subtle connections
-            ctx.lineWidth = 0.5; // Thinner lines
+            ctx.strokeStyle = `hsla(${adjustedHue}, 70%, 60%, ${opacity})`;
+            ctx.lineWidth = 1;
             ctx.moveTo(particlesRef.current[i].x, particlesRef.current[i].y);
             ctx.lineTo(particlesRef.current[j].x, particlesRef.current[j].y);
             ctx.stroke();
