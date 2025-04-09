@@ -7,9 +7,13 @@ interface ScrollRevealProps {
   className?: string;
   threshold?: number;
   delay?: number;
-  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
+  direction?: 'up' | 'down' | 'left' | 'right' | 'none' | 'scale' | 'rotate' | 'flip';
   duration?: number;
   once?: boolean;
+  distance?: number;
+  scale?: number;
+  rotate?: number;
+  easing?: 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'cubic-bezier';
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
@@ -20,6 +24,10 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   direction = 'up',
   duration = 800,
   once = true,
+  distance = 30,
+  scale = 0.95,
+  rotate = 15,
+  easing = 'ease-out',
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -27,17 +35,23 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   const getInitialStyles = () => {
     switch (direction) {
       case 'up':
-        return 'opacity-0 translate-y-8';
+        return `opacity-0 translate-y-[${distance}px]`;
       case 'down':
-        return 'opacity-0 -translate-y-8';
+        return `opacity-0 -translate-y-[${distance}px]`;
       case 'left':
-        return 'opacity-0 translate-x-8';
+        return `opacity-0 translate-x-[${distance}px]`;
       case 'right':
-        return 'opacity-0 -translate-x-8';
+        return `opacity-0 -translate-x-[${distance}px]`;
+      case 'scale':
+        return `opacity-0 scale-[${scale}]`;
+      case 'rotate':
+        return `opacity-0 rotate-[${rotate}deg]`;
+      case 'flip':
+        return `opacity-0 rotateX-[90deg]`;
       case 'none':
         return 'opacity-0';
       default:
-        return 'opacity-0 translate-y-8';
+        return `opacity-0 translate-y-[${distance}px]`;
     }
   };
 
@@ -73,20 +87,66 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     };
   }, [threshold, delay, once]);
 
+  const getTransformStyles = () => {
+    if (direction === 'scale') {
+      return isVisible ? 'scale-100' : `scale-[${scale}]`;
+    } else if (direction === 'rotate') {
+      return isVisible ? 'rotate-0' : `rotate-[${rotate}deg]`;
+    } else if (direction === 'flip') {
+      return isVisible ? 'rotateX-0' : 'rotateX-[90deg]';
+    } else if (direction === 'up' || direction === 'down') {
+      return isVisible ? 'translate-y-0' : direction === 'up' ? `translate-y-[${distance}px]` : `-translate-y-[${distance}px]`;
+    } else if (direction === 'left' || direction === 'right') {
+      return isVisible ? 'translate-x-0' : direction === 'left' ? `translate-x-[${distance}px]` : `-translate-x-[${distance}px]`;
+    } else {
+      return '';
+    }
+  };
+
   return (
     <div
       ref={ref}
       className={cn(
-        getInitialStyles(),
-        isVisible && 'opacity-100 translate-x-0 translate-y-0',
-        `transition-all duration-${duration} ease-out`,
+        'opacity-0',
+        isVisible && 'opacity-100',
+        `transition-all duration-${duration}`,
         className
       )}
-      style={{ transitionDelay: `${delay}ms`, transitionDuration: `${duration}ms` }}
+      style={{ 
+        transitionDelay: `${delay}ms`, 
+        transitionDuration: `${duration}ms`,
+        transitionTimingFunction: easing,
+        transform: isVisible 
+          ? 'translate3d(0, 0, 0) scale(1) rotate(0) rotateX(0)' 
+          : getInitialTransform()
+      }}
     >
       {children}
     </div>
   );
+
+  function getInitialTransform() {
+    switch (direction) {
+      case 'up':
+        return `translate3d(0, ${distance}px, 0)`;
+      case 'down':
+        return `translate3d(0, -${distance}px, 0)`;
+      case 'left':
+        return `translate3d(${distance}px, 0, 0)`;
+      case 'right':
+        return `translate3d(-${distance}px, 0, 0)`;
+      case 'scale':
+        return `scale(${scale})`;
+      case 'rotate':
+        return `rotate(${rotate}deg)`;
+      case 'flip':
+        return `rotateX(90deg)`;
+      case 'none':
+        return 'none';
+      default:
+        return `translate3d(0, ${distance}px, 0)`;
+    }
+  }
 };
 
 export default ScrollReveal;

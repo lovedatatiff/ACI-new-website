@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
 
 interface AnimatedTextProps {
@@ -10,7 +10,10 @@ interface AnimatedTextProps {
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   delay?: number;
   staggerDelay?: number;
-  animationType?: 'characters' | 'words' | 'lines';
+  animationType?: 'characters' | 'words' | 'lines' | 'typewriter' | 'gradient' | 'wave' | 'bounce';
+  gradient?: string;
+  highlightColor?: string;
+  duration?: number;
 }
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({
@@ -21,16 +24,28 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   tag: Tag = 'h2',
   delay = 0,
   staggerDelay = 50,
-  animationType = 'words'
+  animationType = 'words',
+  gradient = 'from-primary to-blue-500',
+  highlightColor = 'text-primary',
+  duration = 600,
 }) => {
+  const containerRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    if (animationType === 'wave' && containerRef.current) {
+      const spans = containerRef.current.querySelectorAll('.wave-letter');
+      spans.forEach((span, i) => {
+        (span as HTMLElement).style.animationDelay = `${delay + i * staggerDelay}ms`;
+      });
+    }
+  }, [animationType, delay, staggerDelay]);
+
   const renderAnimatedText = () => {
     if (!animated) return text;
 
-    let elements: React.ReactNode[] = [];
-    
     switch (animationType) {
       case 'characters':
-        elements = text.split('').map((char, i) => (
+        return text.split('').map((char, i) => (
           <span
             key={i}
             className={cn(
@@ -39,16 +54,16 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
             )}
             style={{
               animationDelay: `${delay + i * staggerDelay}ms`,
-              animationFillMode: 'forwards'
+              animationFillMode: 'forwards',
+              animationDuration: `${duration}ms`
             }}
           >
             {char === ' ' ? '\u00A0' : char}
           </span>
         ));
-        break;
       
       case 'words':
-        elements = text.split(' ').map((word, i) => (
+        return text.split(' ').map((word, i) => (
           <span key={i} className="inline-block mr-1">
             <span
               className={cn(
@@ -57,42 +72,109 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
               )}
               style={{
                 animationDelay: `${delay + i * staggerDelay}ms`,
-                animationFillMode: 'forwards'
+                animationFillMode: 'forwards',
+                animationDuration: `${duration}ms`
               }}
             >
               {word}
             </span>
           </span>
         ));
-        break;
         
       case 'lines':
-        elements = [
+        return (
           <span
-            key="line"
             className={cn(
               "inline-block animate-fade-in opacity-0",
               textClassName
             )}
             style={{
               animationDelay: `${delay}ms`,
-              animationFillMode: 'forwards'
+              animationFillMode: 'forwards',
+              animationDuration: `${duration}ms`
             }}
           >
             {text}
           </span>
-        ];
-        break;
+        );
+        
+      case 'typewriter':
+        return (
+          <span
+            className={cn(
+              "inline-block relative after:content-[''] after:absolute after:right-0 after:top-0 after:h-full after:w-full after:bg-background after:animate-text-reveal",
+              textClassName
+            )}
+            style={{
+              animationDelay: `${delay}ms`,
+              animationDuration: `${duration * 2}ms`
+            }}
+          >
+            {text}
+          </span>
+        );
+
+      case 'gradient':
+        return (
+          <span
+            className={cn(
+              `inline-block bg-gradient-to-r ${gradient} bg-clip-text text-transparent opacity-0 animate-fade-in`,
+              textClassName
+            )}
+            style={{
+              animationDelay: `${delay}ms`,
+              animationFillMode: 'forwards',
+              animationDuration: `${duration}ms`
+            }}
+          >
+            {text}
+          </span>
+        );
+
+      case 'wave':
+        return (
+          <>
+            {text.split('').map((char, i) => (
+              <span
+                key={i}
+                className={cn(
+                  "inline-block wave-letter animate-float",
+                  textClassName
+                )}
+                style={{ animationDelay: `${i * staggerDelay}ms` }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
+          </>
+        );
+
+      case 'bounce':
+        return text.split(' ').map((word, i) => (
+          <span key={i} className="inline-block mr-1">
+            <span
+              className={cn(
+                "inline-block opacity-0 animate-scale-in",
+                textClassName
+              )}
+              style={{
+                animationDelay: `${delay + i * staggerDelay}ms`,
+                animationFillMode: 'forwards',
+                animationDuration: `${duration}ms`
+              }}
+            >
+              {word}
+            </span>
+          </span>
+        ));
         
       default:
-        elements = [<span key="default">{text}</span>];
+        return <span>{text}</span>;
     }
-    
-    return elements;
   };
 
   return (
-    <Tag className={cn("", className)}>
+    <Tag ref={containerRef} className={cn("", className)}>
       {renderAnimatedText()}
     </Tag>
   );
