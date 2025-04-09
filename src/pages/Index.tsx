@@ -74,7 +74,56 @@ const tools = [
   { name: 'Redis', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png' },
   { name: 'HubSpot', logo: 'https://cdn2.hubspot.net/hubfs/53/HubSpot%20Logo.png' },
   { name: 'Miro', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Miro_Logo.svg/1200px-Miro_Logo.svg.png' },
-  { name: 'Fivetran', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Fivetran_logo.svg/1200px-Fivetran_logo.svg.png' }
+  { name: 'Fivetran', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Fivetran_logo.svg/1200px-Fivetran_logo.svg.png' },
+  
+  { name: 'Airtable', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Airtable-logo-blue.svg/1200px-Airtable-logo-blue.svg.png' },
+  { name: 'Invision', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/InVision_icon.svg/1200px-InVision_icon.svg.png' },
+  { name: 'Sketch', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sketch_Logo.svg/1200px-Sketch_Logo.svg.png' },
+  { name: 'DigitalOcean', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigitalOcean_logo.svg/1200px-DigitalOcean_logo.svg.png' },
+  { name: 'CircleCI', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Circleci-icon-logo.svg/1200px-Circleci-icon-logo.svg.png' },
+  { name: 'Jenkins', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Jenkins_logo.svg/1200px-Jenkins_logo.svg.png' },
+  { name: 'Travis CI', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Travis_CI_Mascot.png/800px-Travis_CI_Mascot.png' },
+  { name: 'Docker', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/1200px-Docker_%28container_engine%29_logo.svg.png' },
+  { name: 'Kubernetes', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/1200px-Kubernetes_logo_without_workmark.svg.png' },
+  { name: 'GitLab', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/GitLab_logo.svg/1200px-GitLab_logo.svg.png' },
+  { name: 'Bitbucket', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bitbucket-blue-logomark-only.svg/1200px-Bitbucket-blue-logomark-only.svg.png' },
+  { name: 'Heroku', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Heroku_logo.svg/1200px-Heroku_logo.svg.png' },
+  { name: 'Netlify', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Netlify_logo.svg/1200px-Netlify_logo.svg.png' },
+  { name: 'Vercel', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Vercel_logo.svg/1200px-Vercel_logo.svg.png' },
+  { name: 'Firebase', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/1200px-Firebase_Logo.svg.png' },
+  { name: 'Supabase', logo: 'https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png' },
+  { name: 'Algolia', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Algolia_logo.svg/1200px-Algolia_logo.svg.png' },
+  { name: 'Sentry', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Sentry_logo.svg/1200px-Sentry_logo.svg.png' },
+  { name: 'New Relic', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/New_Relic_logo.svg/1200px-New_Relic_logo.svg.png' },
+  { name: 'Datadog', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Datadog_logo.svg/1200px-Datadog_logo.svg.png' },
+  { name: 'LaunchDarkly', logo: 'https://avatars.githubusercontent.com/u/8039656' },
+  { name: 'Contentful', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Contentful_logo.svg/1200px-Contentful_logo.svg.png' },
+  { name: 'Sanity', logo: 'https://cdn.sanity.io/images/3do82whm/next/4b1f008289da9d4a501ba8952ec37134cc345312-353x353.svg' },
+  { name: 'Prismic', logo: 'https://prismic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprismic-logo.7fc409bb.svg&w=384&q=75' },
+  { name: 'Storyblok', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Storyblok_logo.svg/1200px-Storyblok_logo.svg.png' },
+  { name: 'Strapi', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Strapi_logo.svg/1200px-Strapi_logo.svg.png' },
+  { name: 'HashiCorp', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/HashiCorp_Logo.svg/1200px-HashiCorp_Logo.svg.png' },
+  { name: 'Terraform', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Terraform_Logo.svg/1200px-Terraform_Logo.svg.png' },
+  { name: 'Ansible', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/1200px-Ansible_logo.svg.png' },
+  { name: 'Chef', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Chef_logo.svg/1200px-Chef_logo.svg.png' },
+  { name: 'Puppet', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Puppet_Logo.svg/1200px-Puppet_Logo.svg.png' },
+  { name: 'Grafana', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Grafana_logo.svg/1200px-Grafana_logo.svg.png' },
+  { name: 'Prometheus', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/1200px-Prometheus_software_logo.svg.png' },
+  { name: 'Elasticsearch', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Elasticsearch_logo.svg/1200px-Elasticsearch_logo.svg.png' },
+  { name: 'Kibana', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Kibana_logo.svg/1200px-Kibana_logo.svg.png' },
+  { name: 'Logstash', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Logstash_logo.svg/1200px-Logstash_logo.svg.png' },
+  { name: 'Splunk', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Splunk_logo.svg/1200px-Splunk_logo.svg.png' },
+  { name: 'Segment', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Segment_logo.svg/1200px-Segment_logo.svg.png' },
+  { name: 'Plaid', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Plaid_logo.svg/1200px-Plaid_logo.svg.png' },
+  { name: 'PagerDuty', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/PagerDuty_logo.svg/1200px-PagerDuty_logo.svg.png' },
+  { name: 'Confluence', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Confluence_logo.svg/1200px-Confluence_logo.svg.png' },
+  { name: 'Linear', logo: 'https://linear.app/static/apple-touch-icon.png' },
+  { name: 'Figma', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1200px-Figma-logo.svg.png' },
+  { name: 'Optimizely', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Optimizely_logo.svg/1200px-Optimizely_logo.svg.png' },
+  { name: 'Braintree', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Braintree_logo.svg/1200px-Braintree_logo.svg.png' },
+  { name: 'Adyen', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Adyen_Corporate_Logo.svg/1200px-Adyen_Corporate_Logo.svg.png' },
+  { name: 'Cloudflare', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cloudflare_Logo.png/1200px-Cloudflare_Logo.png' },
+  { name: 'Fastly', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Fastly_logo.svg/1200px-Fastly_logo.svg.png' },
 ];
 
 const Index = () => {
@@ -93,7 +142,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Animated Particles Background */}
       <AnimatedParticles color="#646cff" count={80} />
       
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled 
@@ -136,7 +184,6 @@ const Index = () => {
       </header>
 
       <main>
-        {/* Hero Section */}
         <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="z-10 text-center px-4 max-w-4xl">
             <div className="mb-6">
@@ -180,7 +227,6 @@ const Index = () => {
           </div>
         </section>
         
-        {/* What is ACI.dev Section */}
         <section id="overview" className="py-20 bg-slate-50 dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
@@ -274,7 +320,6 @@ await agent.execute(
           </div>
         </section>
         
-        {/* Features Section */}
         <section id="features" className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
@@ -349,7 +394,6 @@ await agent.execute(
           </div>
         </section>
         
-        {/* Tools Integration Section */}
         <section id="tools" className="py-20 bg-slate-50 dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
@@ -362,36 +406,44 @@ await agent.execute(
                 />
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                   Connect your AI agents to popular tools and services with minimal setup.
+                  Our platform supports over 100 integrations and counting.
                 </p>
               </div>
             </ScrollReveal>
             
-            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-4">
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-3">
               {tools.map((tool, index) => (
                 <ScrollReveal 
                   key={tool.name} 
-                  delay={50 * (index % 10)} 
-                  direction={(index % 4 === 0) ? 'scale' : (index % 4 === 1) ? 'up' : (index % 4 === 2) ? 'rotate' : 'flip'}
-                  duration={400}
+                  delay={20 * (index % 15)} 
+                  direction={(index % 6 === 0) ? 'scale' : (index % 6 === 1) ? 'up' : (index % 6 === 2) ? 'rotate' : (index % 6 === 3) ? 'flip' : (index % 6 === 4) ? 'left' : 'right'}
+                  duration={300}
                 >
-                  <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm p-3 flex flex-col items-center justify-center h-24 hover:shadow-md transition-all duration-300 transform hover:translate-y-[-3px] group">
-                    <div className="mb-2 h-10 flex items-center justify-center">
+                  <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm p-2 flex flex-col items-center justify-center h-16 hover:shadow-md transition-all duration-300 transform hover:translate-y-[-2px] group">
+                    <div className="mb-1 h-6 flex items-center justify-center">
                       <img 
                         src={tool.logo} 
                         alt={`${tool.name} logo`} 
-                        className="max-h-full max-w-full object-contain filter saturate-0 opacity-80 group-hover:opacity-100 transition-all"
-                        style={{ filter: 'brightness(0.9) contrast(0.9) saturate(0) sepia(0.2) hue-rotate(240deg) brightness(1.2)' }}
+                        className="max-h-full max-w-full object-contain transition-all filter"
+                        style={{ 
+                          filter: 'brightness(0.9) contrast(0.9) saturate(0) sepia(0.2) hue-rotate(260deg) brightness(1.4) opacity(0.85)'
+                        }}
                       />
                     </div>
-                    <span className="text-xs font-medium group-hover:text-primary transition-colors text-center truncate w-full">{tool.name}</span>
+                    <span className="text-[10px] font-medium group-hover:text-primary transition-colors text-center truncate w-full">{tool.name}</span>
                   </div>
                 </ScrollReveal>
               ))}
             </div>
+            
+            <div className="mt-12 text-center">
+              <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary/10">
+                View all integrations <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </section>
         
-        {/* CTA Section */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-600 to-blue-600 opacity-90"></div>
           <div className="absolute inset-0">
