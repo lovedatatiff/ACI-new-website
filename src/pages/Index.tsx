@@ -10,7 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 // List of tools with their logos
 const tools = [
   { name: 'Gmail', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png' },
-  { name: 'Hubspot', logo: 'https://cdn2.hubspot.net/hubfs/53/image8.png' },  // Updated Hubspot logo URL
+  { name: 'Hubspot', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/HubSpot_Logo.svg/1280px-HubSpot_Logo.svg.png' },  // Updated Hubspot logo URL
   { name: 'Notion', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png' },
   { name: 'Slack', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png' },
   { name: 'Google Drive', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/2295px-Google_Drive_icon_%282020%29.svg.png' },
