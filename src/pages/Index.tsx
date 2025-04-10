@@ -214,9 +214,9 @@ const Index = () => {
                 text="Build powerful AI agents that can call APIs, navigate websites, and access computer systems—all with secure, cross-category authentication."
                 tag="p"
                 className="text-lg md:text-xl text-muted-foreground mt-4"
-                animationType="typewriter"
+                animationType="unfold"
                 delay={1000}
-                duration={2000}
+                duration={1500}
               />
             </div>
             

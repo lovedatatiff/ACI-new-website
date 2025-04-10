@@ -134,6 +134,11 @@
   100% { width: 0; }
 }
 
+@keyframes text-unfold {
+  0% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
 @keyframes cursor-blink {
   0%, 75% { opacity: 1; }
   76%, 100% { opacity: 0; }

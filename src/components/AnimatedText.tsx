@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
 
@@ -10,7 +9,7 @@ interface AnimatedTextProps {
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   delay?: number;
   staggerDelay?: number;
-  animationType?: 'characters' | 'words' | 'lines' | 'typewriter' | 'gradient' | 'wave' | 'bounce';
+  animationType?: 'characters' | 'words' | 'lines' | 'typewriter' | 'gradient' | 'wave' | 'bounce' | 'unfold';
   gradient?: string;
   highlightColor?: string;
   duration?: number;
@@ -179,6 +178,22 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
           </span>
         ));
         
+      case 'unfold':
+        return (
+          <span className={cn("relative inline-block", textClassName)}>
+            <span>{text}</span>
+            <span 
+              className="absolute inset-0 w-full bg-background animate-text-unfold" 
+              style={{
+                animationDelay: `${delay}ms`,
+                animationDuration: `${duration}ms`,
+                animationFillMode: 'forwards',
+                transformOrigin: 'left'
+              }}
+            ></span>
+          </span>
+        );
+
       default:
         return <span>{text}</span>;
     }
