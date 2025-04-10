@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
 
@@ -128,7 +129,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
         return (
           <span
             className={cn(
-              `inline-block bg-gradient-to-r ${gradient} bg-clip-text text-transparent opacity-0 animate-fade-in",
+              `inline-block bg-gradient-to-r ${gradient} bg-clip-text text-transparent opacity-0 animate-fade-in`,
               textClassName
             )}
             style={{
