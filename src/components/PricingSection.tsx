@@ -72,7 +72,7 @@ const pricingTiers: PricingTier[] = [
     ],
     cta: "Start Free Trial",
     popular: true,
-    gradient: "from-primary/20 via-blue-500/20 to-violet-500/20",
+    gradient: "from-[#6269D2]/20 via-[#8D94E1]/20 to-[#B7BFFE]/20",
   },
   {
     name: "Enterprise",
@@ -102,7 +102,7 @@ const PricingSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
               Flexible Pricing for Every Team
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -120,19 +120,19 @@ const PricingSection = () => {
             >
               <Card className={`
                 h-full relative overflow-hidden flex flex-col
-                ${tier.popular ? 'border-primary shadow-lg shadow-primary/10' : ''}
+                ${tier.popular ? 'border-[#6269D2] shadow-lg shadow-[#6269D2]/20' : ''}
                 transition-all duration-300 hover:shadow-xl hover:-translate-y-1
               `}>
                 {tier.popular && (
                   <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 rotate-12">
-                    <div className="bg-primary text-white text-xs px-6 py-1 rounded-full font-medium">
+                    <div className="bg-[#6269D2] text-white text-xs px-6 py-1 rounded-full font-medium">
                       Most Popular
                     </div>
                   </div>
                 )}
                 
                 {tier.gradient && (
-                  <div className={`absolute inset-0 bg-gradient-to-r ${tier.gradient} opacity-30 z-0`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${tier.gradient} opacity-40 z-0`}></div>
                 )}
                 
                 <CardHeader className="relative z-10">
@@ -142,7 +142,7 @@ const PricingSection = () => {
                 
                 <CardContent className="relative z-10 flex-grow">
                   <div className="mb-6">
-                    <span className="text-4xl font-bold">{tier.price}</span>
+                    <span className="text-4xl font-bold text-[#6269D2]">{tier.price}</span>
                     <span className="text-muted-foreground ml-1">{tier.priceDetail}</span>
                   </div>
                   
@@ -150,7 +150,7 @@ const PricingSection = () => {
                     {tier.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center">
                         {feature.included ? (
-                          <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
+                          <Check className="h-5 w-5 text-[#6269D2] mr-2 flex-shrink-0" />
                         ) : (
                           <div className="h-5 w-5 rounded-full border border-muted-foreground/30 mr-2 flex-shrink-0" />
                         )}
@@ -178,7 +178,7 @@ const PricingSection = () => {
                 <CardFooter className="relative z-10 pt-4">
                   <Button 
                     variant={tier.popular ? "default" : "outline"} 
-                    className={`w-full ${tier.popular ? 'bg-primary hover:bg-primary/90' : ''}`}
+                    className={`w-full ${tier.popular ? 'bg-[#6269D2] hover:bg-[#6269D2]/90' : 'border-[#6269D2] text-[#6269D2] hover:bg-[#6269D2]/10'}`}
                   >
                     {tier.cta}
                   </Button>
@@ -190,12 +190,12 @@ const PricingSection = () => {
         
         <div className="mt-16 text-center">
           <ScrollReveal delay={400}>
-            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-lg max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-[#6269D2]/5 to-[#B7BFFE]/5 p-8 rounded-lg max-w-4xl mx-auto border border-[#8D94E1]/20">
               <h3 className="text-xl font-semibold mb-2">Need a custom solution?</h3>
               <p className="mb-4 text-muted-foreground">
                 Our enterprise plan includes custom features, dedicated support, and volume discounts.
               </p>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+              <Button variant="outline" className="border-[#6269D2] text-[#6269D2] hover:bg-[#6269D2]/10">
                 Schedule a Demo
               </Button>
             </div>
