@@ -103,21 +103,12 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
         return (
           <span
             className={cn(
-              "inline-block opacity-1", // Changed from opacity-0 to opacity-1
+              "inline-block opacity-1 relative after:content-[''] after:absolute after:right-0 after:top-0 after:h-full after:w-full after:bg-background after:animate-text-reveal",
               textClassName
             )}
             style={{
-              position: 'relative',
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                right: 0,
-                top: 0,
-                height: '100%',
-                width: '100%',
-                background: 'var(--background)',
-                animation: `typewriter ${duration * 2}ms steps(${text.length}) ${delay}ms forwards`
-              }
+              animationDelay: `${delay}ms`,
+              animationDuration: `${duration * 2}ms`
             }}
           >
             {text}

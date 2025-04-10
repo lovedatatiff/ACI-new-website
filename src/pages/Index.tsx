@@ -1,11 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedText from '@/components/AnimatedText';
 import AnimatedParticles from '@/components/AnimatedParticles';
 import PricingSection from '@/components/PricingSection';
 import { Button } from '@/components/ui/button';
-import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown, Discord } from 'lucide-react';
+import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 // List of tools with their logos
@@ -40,7 +39,7 @@ const tools = [
   { name: 'Instagram', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png' },
   { name: 'YouTube', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1200px-YouTube_full-color_icon_%282017%29.svg.png' },
   { name: 'WordPress', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/WordPress_blue_logo.svg/1200px-WordPress_blue_logo.svg.png' },
-  { name: 'Squarespace', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Squarespace_Logo.svg/1200px-Squarespace_Logo.svg.png' },
+  { name: 'Squarespace', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Squarespace_Logo.svg/1280px-Squarespace_Logo.svg.png' },
   { name: 'Wix', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/WixLogo.svg/1200px-WixLogo.svg.png' },
   { name: 'Mailchimp', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Mailchimp_logo.svg/1200px-Mailchimp_logo.svg.png' },
   { name: 'Spotify', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1200px-Spotify_logo_without_text.svg.png' },
@@ -178,7 +177,7 @@ const Index = () => {
                   <Github className="h-5 w-5" />
                 </a>
                 <a href="https://discord.gg/aci-dev" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Discord">
-                  <Discord className="h-5 w-5" />
+                  <MessageSquare className="h-5 w-5" />
                 </a>
               </div>
               <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90">
@@ -467,7 +466,7 @@ await agent.execute(
           <div className="absolute inset-0">
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1440 800" preserveAspectRatio="none">
               <path 
-                d="M 0,800 C 0,800 0,266 0,266 C 144.53571428571428,284.92857142857144 289.0714285714286,303.85714285714283 419,301 C 548.9285714285714,298.14285714285717 664.2499999999999,273.5 783,239 C 901.7500000000001,204.5 1023.9285714285713,160.14285714285714 1138,175 C 1252.0714285714287,189.85714285714286 1358.0357142857142,263.92857142857144 1464,337 C 1569.9642857142858,410.07142857142856 1675.9285714285713,482.1428571428571 1782,482 C 1888.0714285714287,481.8571428571429 1994.25,409.5 2074,375 C 2153.75,340.5 2207.071428571429,343.85714285714283 2295,349 C 2382.928571428571,354.14285714285717 2505.4642857142855,361.07142857142856 2628,368 C 2750.5357142857145,374.92857142857144 2873.0714285714284,381.85714285714283 2995,388 C 3116.9285714285716,394.14285714285717 3238.25,399.5 3330,402 C 3421.75,404.5 3483.9285714284716,404.1428571428571 3546,403 C 3608.0714285715284,401.8571428571429 3670.0357142857138,400.92857142857144 3732,400 C 3793.964285714286,399.07142857142856 3855.9285714285716,398.14285714285717 3900,397 C 3944.0714285714284,395.85714285714283 3970.25,394.5 4026,396 C 4081.75,397.5 4167.071428571428,401.85714285714283 4252,406 C 4336.928571428572,410.14285714285717 4421.464285714286,414.07142857142856 4506,418 C 4590.535714285714,421.92857142857144 4675.071428571428,425.85714285714283 4760,423 C2386.75,340.5 2207.071428571429,343.85714285714283 2295,349"
+                d="M 0,800 C 0,800 0,533 0,533 C 85.17857142857142,498.42857142857144 170.35714285714283,463.85714285714283 284,456 C 397.64285714285717,448.14285714285717 539.75,467 666,505 C 792.25,543 902.6428571428571,600.1428571428571 1000,616 C 1097.357142857143,631.8571428571429 1181.6785714285716,606.4285714285714 1276,569 C 1370.3214285714284,531.5714285714286 1474.6428571428573,482.1428571428571 1568,466 C 1661.3571428571427,449.8571428571429 1743.7499999999995,467 1846,476 C 1948.2500000000005,485 2070.3571428571427,485.85714285714283 2173,507 C 2275.6428571428573,528.1428571428571 2358.8214285714284,569.5714285714286 2462,561 C 2565.1785714285716,552.4285714285714 2688.357142857143,493.85714285714283 2789,485 C 2889.642857142857,476.14285714285717 2967.75,517 3046,534 C 3124.25,551 3202.6428571428573,544.1428571428571 3281,537"
                 fill="none" 
                 stroke="rgba(255,255,255,0.1)" 
                 strokeWidth="3"

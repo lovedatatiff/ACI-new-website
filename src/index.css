@@ -130,6 +130,11 @@
   to { width: 0%; }
 }
 
+@keyframes text-reveal {
+  0% { width: 100%; }
+  100% { width: 0; }
+}
+
 html {
   scroll-behavior: smooth;
 }
