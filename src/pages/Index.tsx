@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
-// List of tools with their logos
 const tools = [
   { name: 'Gmail', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png' },
   { name: 'Microsoft 365', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Microsoft_365_logo.svg/2048px-Microsoft_365_logo.svg.png' },

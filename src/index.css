@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -162,4 +163,8 @@ body {
 
 .violet-gradient {
   background: linear-gradient(135deg, #6269D2 0%, #8D94E1 50%, #B7BFFE 100%);
+}
+
+.animate-text-unfold {
+  animation: text-unfold 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
 }

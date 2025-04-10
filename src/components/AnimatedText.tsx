@@ -181,7 +181,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
       case 'unfold':
         return (
           <span className={cn("relative inline-block", textClassName)}>
-            <span>{text}</span>
+            <span className="opacity-100">{text}</span>
             <span 
               className="absolute inset-0 w-full bg-background animate-text-unfold" 
               style={{
