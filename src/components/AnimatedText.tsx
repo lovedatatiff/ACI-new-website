@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
 
@@ -29,7 +28,6 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   highlightColor = 'text-primary',
   duration = 600,
 }) => {
-  // Fix: Use a more specific ref type that matches the HTML element that could be rendered
   const containerRef = useRef<HTMLDivElement | null>(null);
   
   useEffect(() => {
@@ -103,15 +101,26 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
         return (
           <span
             className={cn(
-              "inline-block opacity-1 relative after:content-[''] after:absolute after:right-0 after:top-0 after:h-full after:w-full after:bg-background after:animate-text-reveal",
+              "inline-block relative",
               textClassName
             )}
-            style={{
-              animationDelay: `${delay}ms`,
-              animationDuration: `${duration * 2}ms`
-            }}
           >
-            {text}
+            <span>{text}</span>
+            <span
+              className="absolute inset-0 bg-background animate-text-reveal"
+              style={{
+                animationDelay: `${delay}ms`,
+                animationDuration: `${duration}ms`,
+                animationFillMode: 'forwards'
+              }}
+            ></span>
+            <span
+              className="absolute right-0 top-0 h-full w-0.5 bg-primary animate-pulse"
+              style={{
+                animationDelay: `${delay + duration}ms`,
+                animationDuration: '0.75s'
+              }}
+            ></span>
           </span>
         );
 
@@ -119,7 +128,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
         return (
           <span
             className={cn(
-              `inline-block bg-gradient-to-r ${gradient} bg-clip-text text-transparent opacity-0 animate-fade-in`,
+              `inline-block bg-gradient-to-r ${gradient} bg-clip-text text-transparent opacity-0 animate-fade-in",
               textClassName
             )}
             style={{
@@ -174,7 +183,6 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     }
   };
 
-  // Fix: Create a wrapper div with the ref instead of applying it directly to the dynamic tag
   return (
     <div ref={containerRef} className={cn("", className)}>
       <Tag className="contents">

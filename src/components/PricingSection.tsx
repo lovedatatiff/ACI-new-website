@@ -92,26 +92,21 @@ const pricingTiers: PricingTier[] = [
     cta: "Start Free Trial",
     popular: true,
     gradient: "from-[#6269D2]/20 via-[#8D94E1]/20 to-[#B7BFFE]/20",
-  },
-  {
-    name: "Enterprise",
-    description: "For organizations with complex AI agent needs",
-    price: "Custom",
-    priceDetail: "contact sales",
-    features: [
-      { text: "Unlimited AI agents", included: true },
-      { text: "Unlimited API calls", included: true },
-      { text: "All tool integrations", included: true },
-      { text: "Enterprise authentication", included: true, tooltip: "Includes SSO, SCIM, and dedicated Identity Provider integration" },
-      { text: "Advanced workflow discovery", included: true },
-      { text: "Multiple custom domains", included: true },
-      { text: "Team & role management", included: true },
-      { text: "Advanced analytics & reporting", included: true },
-      { text: "Dedicated support", included: true },
-      { text: "White-labeling", included: true },
-    ],
-    cta: "Contact Sales",
-  },
+  }
+];
+
+// Enterprise features for the custom solution box
+const enterpriseFeatures = [
+  "Unlimited AI agents",
+  "Unlimited API calls",
+  "All tool integrations",
+  "Enterprise authentication (SSO, SCIM, Identity Provider integration)",
+  "Advanced workflow discovery",
+  "Multiple custom domains",
+  "Team & role management",
+  "Advanced analytics & reporting",
+  "Dedicated support",
+  "White-labeling"
 ];
 
 const PricingSection = () => {
@@ -209,14 +204,29 @@ const PricingSection = () => {
         
         <div className="mt-16 text-center">
           <ScrollReveal delay={400}>
-            <div className="bg-gradient-to-r from-[#6269D2]/5 to-[#B7BFFE]/5 p-8 rounded-lg max-w-4xl mx-auto border border-[#8D94E1]/20">
-              <h3 className="text-xl font-semibold mb-2">Need a custom solution?</h3>
-              <p className="mb-4 text-muted-foreground">
-                Our enterprise plan includes custom features, dedicated support, and volume discounts.
+            <div className="bg-gradient-to-r from-[#6269D2]/10 to-[#B7BFFE]/10 p-8 rounded-lg max-w-4xl mx-auto border border-[#8D94E1]/20">
+              <h3 className="text-2xl font-semibold mb-4">Enterprise Plan</h3>
+              <p className="mb-6 text-muted-foreground">
+                For organizations with complex AI agent needs. Includes custom features, dedicated support, and volume discounts.
               </p>
-              <Button variant="outline" className="border-[#6269D2] text-[#6269D2] hover:bg-[#6269D2]/10">
-                Schedule a Demo
-              </Button>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 mb-8 text-left max-w-3xl mx-auto">
+                {enterpriseFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-center">
+                    <Check className="h-5 w-5 text-[#6269D2] mr-2 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="flex justify-center mt-6">
+                <Button variant="default" className="bg-[#6269D2] hover:bg-[#6269D2]/90">
+                  Contact Sales
+                </Button>
+                <Button variant="outline" className="border-[#6269D2] text-[#6269D2] hover:bg-[#6269D2]/10 ml-4">
+                  Schedule a Demo
+                </Button>
+              </div>
             </div>
           </ScrollReveal>
         </div>

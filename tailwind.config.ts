@@ -85,6 +85,10 @@ const config = {
           from: { width: "100%" },
           to: { width: "0%" },
         },
+        "cursor-blink": {
+          "0%, 75%": { opacity: "1" },
+          "76%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -92,7 +96,8 @@ const config = {
         "fade-in": "fade-in 0.5s ease-in-out forwards",
         "scale-in": "scale-in 0.5s ease-in-out forwards",
         "float": "float 3s ease-in-out infinite",
-        "text-reveal": "text-reveal 2s steps(50) forwards",
+        "text-reveal": "text-reveal 2s cubic-bezier(0.76, 0, 0.24, 1) forwards",
+        "cursor-blink": "cursor-blink 1s infinite",
       },
     },
   },
