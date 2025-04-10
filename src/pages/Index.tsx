@@ -1,10 +1,11 @@
+
 import React, { useEffect, useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedText from '@/components/AnimatedText';
 import AnimatedParticles from '@/components/AnimatedParticles';
 import PricingSection from '@/components/PricingSection';
 import { Button } from '@/components/ui/button';
-import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown } from 'lucide-react';
+import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown, Discord } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 // List of tools with their logos
@@ -169,6 +170,17 @@ const Index = () => {
               <a href="https://www.aci.dev/docs/introduction/overview" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                 Documentation
               </a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                Blog
+              </a>
+              <div className="flex items-center space-x-4 ml-2">
+                <a href="https://github.com/aci-dev" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
+                  <Github className="h-5 w-5" />
+                </a>
+                <a href="https://discord.gg/aci-dev" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Discord">
+                  <Discord className="h-5 w-5" />
+                </a>
+              </div>
               <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90">
                 Get Started
               </Button>
@@ -203,7 +215,7 @@ const Index = () => {
                 text="Build powerful AI agents that can call APIs, navigate websites, and access computer systems—all with secure, cross-category authentication."
                 tag="p"
                 className="text-lg md:text-xl text-muted-foreground mt-4"
-                animationType="typewriter"
+                animationType="lines"
                 delay={1000}
               />
             </div>

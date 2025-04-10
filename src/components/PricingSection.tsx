@@ -35,6 +35,25 @@ type PricingTier = {
 
 const pricingTiers: PricingTier[] = [
   {
+    name: "Free",
+    description: "For individuals just getting started with AI agents",
+    price: "$0",
+    priceDetail: "forever",
+    features: [
+      { text: "1 AI agent", included: true },
+      { text: "20 API calls per day", included: true },
+      { text: "2 tool integrations", included: true },
+      { text: "Basic authentication", included: true },
+      { text: "Community support", included: true },
+      { text: "Workflow discovery", included: false },
+      { text: "Custom domain", included: false },
+      { text: "Team collaboration", included: false },
+      { text: "Advanced analytics", included: false },
+      { text: "Priority support", included: false },
+    ],
+    cta: "Get Started",
+  },
+  {
     name: "Starter",
     description: "For individuals and small teams getting started with AI agents",
     price: "$29",
