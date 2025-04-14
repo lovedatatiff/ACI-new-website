@@ -1,9 +1,10 @@
 
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Building, Shield, Users, ArrowRight, Check, Database, Zap } from 'lucide-react';
+import { Building, Shield, Users, ArrowRight, Check, Database, Zap, Briefcase, Server, Lock } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ScrollReveal from '@/components/ScrollReveal';
+import SolutionCard from '@/components/SolutionCard';
 
 const Enterprise = () => {
   useEffect(() => {
@@ -38,41 +39,33 @@ const Enterprise = () => {
             <div className="mb-24">
               <h2 className="text-3xl font-bold mb-12 text-center">Designed for enterprise teams that need:</h2>
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="flex items-start gap-5 p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Check className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">Scalable AI integration across multiple business units</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-5 p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Check className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">Secure OAuth token management and SSO</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-5 p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Check className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">Custom policies, audit trails, and usage analytics</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-5 p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Check className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">Guaranteed uptime, dedicated support, and SLAs</p>
-                  </div>
-                </div>
+                {[
+                  {
+                    icon: <Server className="h-6 w-6" />,
+                    text: "Scalable AI integration across multiple business units"
+                  },
+                  {
+                    icon: <Lock className="h-6 w-6" />,
+                    text: "Secure OAuth token management and SSO"
+                  },
+                  {
+                    icon: <Shield className="h-6 w-6" />,
+                    text: "Custom policies, audit trails, and usage analytics"
+                  },
+                  {
+                    icon: <Check className="h-6 w-6" />,
+                    text: "Guaranteed uptime, dedicated support, and SLAs"
+                  }
+                ].map((item, i) => (
+                  <SolutionCard 
+                    key={i}
+                    icon={item.icon}
+                    delay={i * 100}
+                    gradient="from-primary/5 via-secondary/10 to-transparent"
+                  >
+                    <p className="text-lg">{item.text}</p>
+                  </SolutionCard>
+                ))}
               </div>
             </div>
           </ScrollReveal>
@@ -82,11 +75,11 @@ const Enterprise = () => {
             <div className="mb-24">
               <h2 className="text-3xl font-bold mb-12 text-center">Core Features</h2>
               <div className="grid md:grid-cols-2 gap-10">
-                <div className="space-y-6 bg-gradient-to-br from-secondary/10 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
-                    <Shield className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold">Secure & Scalable Infrastructure</h3>
+                <SolutionCard 
+                  icon={<Shield className="h-8 w-8" />}
+                  title="Secure & Scalable Infrastructure"
+                  gradient="from-secondary/10 via-accent/5 to-transparent"
+                >
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -97,13 +90,14 @@ const Enterprise = () => {
                       <p>Granular permission controls and audit logs</p>
                     </li>
                   </ul>
-                </div>
+                </SolutionCard>
 
-                <div className="space-y-6 bg-gradient-to-br from-secondary/10 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
-                    <Database className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold">Prebuilt Integrations for 250+ Tools</h3>
+                <SolutionCard 
+                  icon={<Database className="h-8 w-8" />}
+                  title="Prebuilt Integrations for 250+ Tools"
+                  gradient="from-secondary/10 via-accent/5 to-transparent"
+                  delay={100}
+                >
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -114,13 +108,14 @@ const Enterprise = () => {
                       <p>Abstract away brittle API logic — deploy in hours, not weeks</p>
                     </li>
                   </ul>
-                </div>
+                </SolutionCard>
 
-                <div className="space-y-6 bg-gradient-to-br from-secondary/10 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
-                    <Users className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold">Unified Agent Management</h3>
+                <SolutionCard 
+                  icon={<Users className="h-8 w-8" />}
+                  title="Unified Agent Management"
+                  gradient="from-secondary/10 via-accent/5 to-transparent"
+                  delay={200}
+                >
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -131,13 +126,14 @@ const Enterprise = () => {
                       <p>Built-in observability and error tracking</p>
                     </li>
                   </ul>
-                </div>
+                </SolutionCard>
 
-                <div className="space-y-6 bg-gradient-to-br from-secondary/10 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
-                    <Building className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold">Enterprise Support</h3>
+                <SolutionCard 
+                  icon={<Building className="h-8 w-8" />}
+                  title="Enterprise Support"
+                  gradient="from-secondary/10 via-accent/5 to-transparent"
+                  delay={300}
+                >
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -148,7 +144,7 @@ const Enterprise = () => {
                       <p>SSO & SCIM provisioning for team management</p>
                     </li>
                   </ul>
-                </div>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>
@@ -158,26 +154,29 @@ const Enterprise = () => {
             <div className="mb-24 bg-gradient-to-br from-accent/20 to-transparent rounded-3xl p-12">
               <h2 className="text-3xl font-bold mb-12 text-center">Example Use Cases</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="p-6 bg-gradient-to-br from-background/80 to-background/30 rounded-xl">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <Database className="h-6 w-6" />
-                  </div>
+                <SolutionCard 
+                  icon={<Database className="h-6 w-6" />}
+                  gradient="from-background/80 to-background/30"
+                  delay={100}
+                >
                   <p className="text-lg">AI agents updating Salesforce after customer meetings</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="p-6 bg-gradient-to-br from-background/80 to-background/30 rounded-xl">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <Shield className="h-6 w-6" />
-                  </div>
+                <SolutionCard 
+                  icon={<Shield className="h-6 w-6" />}
+                  gradient="from-background/80 to-background/30"
+                  delay={200}
+                >
                   <p className="text-lg">Internal support bots triaging Jira tickets</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="p-6 bg-gradient-to-br from-background/80 to-background/30 rounded-xl">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <Users className="h-6 w-6" />
-                  </div>
+                <SolutionCard 
+                  icon={<Users className="h-6 w-6" />}
+                  gradient="from-background/80 to-background/30"
+                  delay={300}
+                >
                   <p className="text-lg">Automating HR onboarding across BambooHR, Notion, and Gmail</p>
-                </div>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>

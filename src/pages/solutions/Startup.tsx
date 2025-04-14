@@ -1,9 +1,10 @@
 
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Rocket, Zap, Sparkles, ArrowRight, Check, Code, Shield, Timer } from 'lucide-react';
+import { Rocket, Zap, Sparkles, ArrowRight, Check, Code, Shield, Timer, Lightbulb, Workflow } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ScrollReveal from '@/components/ScrollReveal';
+import SolutionCard from '@/components/SolutionCard';
 
 const Startup = () => {
   useEffect(() => {
@@ -38,26 +39,29 @@ const Startup = () => {
             <div className="mb-24">
               <h2 className="text-3xl font-bold mb-12 text-center">You're building fast — we help you ship faster</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="flex flex-col items-start p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-colors">
-                  <div className="flex-shrink-0 h-12 w-12 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Code className="h-6 w-6 text-primary" />
-                  </div>
+                <SolutionCard 
+                  icon={<Code className="h-6 w-6" />}
+                  gradient="from-primary/5 via-secondary/10 to-transparent"
+                  delay={100}
+                >
                   <p className="text-lg">One-line setup to connect GPT to tools like Slack, Gmail, Notion, HubSpot</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="flex flex-col items-start p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-colors">
-                  <div className="flex-shrink-0 h-12 w-12 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-primary" />
-                  </div>
+                <SolutionCard 
+                  icon={<Shield className="h-6 w-6" />}
+                  gradient="from-primary/5 via-secondary/10 to-transparent"
+                  delay={200}
+                >
                   <p className="text-lg">No OAuth headaches — we handle auth and API logic</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="flex flex-col items-start p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-colors">
-                  <div className="flex-shrink-0 h-12 w-12 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Code className="h-6 w-6 text-primary" />
-                  </div>
+                <SolutionCard 
+                  icon={<Lightbulb className="h-6 w-6" />}
+                  gradient="from-primary/5 via-secondary/10 to-transparent"
+                  delay={300}
+                >
                   <p className="text-lg">Add AI-powered actions to your app with just a few lines of code</p>
-                </div>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>
@@ -67,33 +71,37 @@ const Startup = () => {
             <div className="mb-24 bg-gradient-to-br from-secondary/10 to-primary/5 p-12 rounded-3xl">
               <h2 className="text-3xl font-bold mb-12 text-center">Why Startups Love ACI.dev</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <div className="flex flex-col items-start">
-                  <div className="inline-flex items-center justify-center p-4 mb-6 rounded-full bg-primary/10 text-primary">
-                    <Rocket className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Prebuilt actions for 250+ tools</h3>
-                </div>
+                <SolutionCard 
+                  icon={<Rocket className="h-8 w-8" />}
+                  title="Prebuilt actions for 250+ tools"
+                  gradient="from-transparent to-transparent"
+                  delay={100}
+                  className="bg-transparent"
+                />
 
-                <div className="flex flex-col items-start">
-                  <div className="inline-flex items-center justify-center p-4 mb-6 rounded-full bg-primary/10 text-primary">
-                    <Zap className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Works with any LLM: OpenAI, Anthropic, Mistral, and more</h3>
-                </div>
+                <SolutionCard 
+                  icon={<Zap className="h-8 w-8" />}
+                  title="Works with any LLM: OpenAI, Anthropic, Mistral, and more"
+                  gradient="from-transparent to-transparent"
+                  delay={200}
+                  className="bg-transparent"
+                />
 
-                <div className="flex flex-col items-start">
-                  <div className="inline-flex items-center justify-center p-4 mb-6 rounded-full bg-primary/10 text-primary">
-                    <Shield className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Secure agent execution with built-in rate limiting and retries</h3>
-                </div>
+                <SolutionCard 
+                  icon={<Shield className="h-8 w-8" />}
+                  title="Secure agent execution with built-in rate limiting and retries"
+                  gradient="from-transparent to-transparent"
+                  delay={300}
+                  className="bg-transparent"
+                />
 
-                <div className="flex flex-col items-start">
-                  <div className="inline-flex items-center justify-center p-4 mb-6 rounded-full bg-primary/10 text-primary">
-                    <Sparkles className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Free tier for early projects</h3>
-                </div>
+                <SolutionCard 
+                  icon={<Sparkles className="h-8 w-8" />}
+                  title="Free tier for early projects"
+                  gradient="from-transparent to-transparent"
+                  delay={400}
+                  className="bg-transparent"
+                />
               </div>
             </div>
           </ScrollReveal>
@@ -103,17 +111,29 @@ const Startup = () => {
             <div className="mb-24">
               <h2 className="text-3xl font-bold mb-12 text-center">Use Cases</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <SolutionCard 
+                  icon={<Code className="h-6 w-6" />}
+                  gradient="from-secondary/10 to-transparent"
+                  delay={100}
+                >
                   <p className="text-lg">AI assistant that reads emails and updates Notion</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <SolutionCard 
+                  icon={<Zap className="h-6 w-6" />}
+                  gradient="from-secondary/10 to-transparent"
+                  delay={200}
+                >
                   <p className="text-lg">GPT bot that pings Slack and updates HubSpot tasks</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <SolutionCard 
+                  icon={<Rocket className="h-6 w-6" />}
+                  gradient="from-secondary/10 to-transparent"
+                  delay={300}
+                >
                   <p className="text-lg">One-person team automating investor updates via Gmail</p>
-                </div>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>

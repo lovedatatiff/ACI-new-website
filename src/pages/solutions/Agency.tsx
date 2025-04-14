@@ -1,9 +1,10 @@
 
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Briefcase, Users, Lightbulb, ArrowRight, Check, Layout, Layers, PieChart } from 'lucide-react';
+import { Briefcase, Users, Lightbulb, ArrowRight, Check, Layout, Layers, PieChart, Lock, Database, Code, Share2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ScrollReveal from '@/components/ScrollReveal';
+import SolutionCard from '@/components/SolutionCard';
 
 const Agency = () => {
   useEffect(() => {
@@ -38,41 +39,41 @@ const Agency = () => {
             <div className="mb-24 bg-gradient-to-br from-secondary/10 to-primary/5 p-12 rounded-3xl">
               <h2 className="text-3xl font-bold mb-12 text-center">Why Agencies Choose ACI.dev</h2>
               <div className="grid md:grid-cols-2 gap-10">
-                <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Users className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">Multi-tenant auth support for managing multiple clients</p>
-                  </div>
-                </div>
+                <SolutionCard 
+                  icon={<Users className="h-6 w-6" />}
+                  gradient="from-transparent to-transparent"
+                  delay={100}
+                  className="bg-transparent"
+                >
+                  <p className="text-lg">Multi-tenant auth support for managing multiple clients</p>
+                </SolutionCard>
                 
-                <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Layers className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">Prebuilt connectors for 250+ tools (Slack, Gmail, Salesforce, etc.)</p>
-                  </div>
-                </div>
+                <SolutionCard 
+                  icon={<Layers className="h-6 w-6" />}
+                  gradient="from-transparent to-transparent"
+                  delay={200}
+                  className="bg-transparent"
+                >
+                  <p className="text-lg">Prebuilt connectors for 250+ tools (Slack, Gmail, Salesforce, etc.)</p>
+                </SolutionCard>
                 
-                <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Layout className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">Reusable agent templates and custom workflows</p>
-                  </div>
-                </div>
+                <SolutionCard 
+                  icon={<Layout className="h-6 w-6" />}
+                  gradient="from-transparent to-transparent"
+                  delay={300}
+                  className="bg-transparent"
+                >
+                  <p className="text-lg">Reusable agent templates and custom workflows</p>
+                </SolutionCard>
                 
-                <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <PieChart className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-lg">White-label and rebranding options</p>
-                  </div>
-                </div>
+                <SolutionCard 
+                  icon={<PieChart className="h-6 w-6" />}
+                  gradient="from-transparent to-transparent"
+                  delay={400}
+                  className="bg-transparent"
+                >
+                  <p className="text-lg">White-label and rebranding options</p>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>
@@ -82,11 +83,12 @@ const Agency = () => {
             <div className="mb-24">
               <h2 className="text-3xl font-bold mb-12 text-center">Core Capabilities</h2>
               <div className="grid md:grid-cols-3 gap-10">
-                <div className="space-y-6 bg-gradient-to-br from-primary/5 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
-                    <Briefcase className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold">Multi-Workspace Support</h3>
+                <SolutionCard 
+                  icon={<Briefcase className="h-8 w-8" />}
+                  title="Multi-Workspace Support"
+                  gradient="from-primary/5 via-secondary/5 to-transparent"
+                  delay={100}
+                >
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -97,13 +99,14 @@ const Agency = () => {
                       <p>Ensure data isolation and agent behavior customization</p>
                     </li>
                   </ul>
-                </div>
+                </SolutionCard>
 
-                <div className="space-y-6 bg-gradient-to-br from-primary/5 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
-                    <Users className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold">Low-Lift Client Integrations</h3>
+                <SolutionCard 
+                  icon={<Users className="h-8 w-8" />}
+                  title="Low-Lift Client Integrations" 
+                  gradient="from-primary/5 via-secondary/5 to-transparent"
+                  delay={200}
+                >
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -114,13 +117,14 @@ const Agency = () => {
                       <p>Launch GPT-enabled workflows in hours, not weeks</p>
                     </li>
                   </ul>
-                </div>
+                </SolutionCard>
 
-                <div className="space-y-6 bg-gradient-to-br from-primary/5 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
-                    <Lightbulb className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold">Expand Your Service Offering</h3>
+                <SolutionCard 
+                  icon={<Lightbulb className="h-8 w-8" />}
+                  title="Expand Your Service Offering"
+                  gradient="from-primary/5 via-secondary/5 to-transparent"
+                  delay={300}
+                >
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
@@ -131,7 +135,7 @@ const Agency = () => {
                       <p>Offer clients smart agents for operations, marketing, and support</p>
                     </li>
                   </ul>
-                </div>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>
@@ -141,17 +145,29 @@ const Agency = () => {
             <div className="mb-24">
               <h2 className="text-3xl font-bold mb-12 text-center">Example Use Cases</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <SolutionCard 
+                  icon={<Database className="h-6 w-6" />}
+                  gradient="from-secondary/10 to-transparent"
+                  delay={100}
+                >
                   <p className="text-lg">Slack + CRM agents that follow up with leads</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <SolutionCard 
+                  icon={<Code className="h-6 w-6" />}
+                  gradient="from-secondary/10 to-transparent"
+                  delay={200}
+                >
                   <p className="text-lg">AI onboarding bots that trigger tasks across Notion and ClickUp</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <SolutionCard 
+                  icon={<Share2 className="h-6 w-6" />}
+                  gradient="from-secondary/10 to-transparent"
+                  delay={300}
+                >
                   <p className="text-lg">GPT-powered assistants that automate support ticketing</p>
-                </div>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>
@@ -161,26 +177,29 @@ const Agency = () => {
             <div className="mb-24 bg-gradient-to-br from-accent/20 to-transparent rounded-3xl p-12">
               <h2 className="text-3xl font-bold mb-12 text-center">Agency Partnership Program</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="group bg-background/80 p-8 rounded-xl hover:bg-background transition-colors">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <Users className="h-6 w-6" />
-                  </div>
+                <SolutionCard 
+                  icon={<Users className="h-6 w-6" />}
+                  gradient="from-background/80 to-background/30"
+                  delay={100}
+                >
                   <p className="text-lg">Co-marketing opportunities</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="group bg-background/80 p-8 rounded-xl hover:bg-background transition-colors">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <PieChart className="h-6 w-6" />
-                  </div>
+                <SolutionCard 
+                  icon={<PieChart className="h-6 w-6" />}
+                  gradient="from-background/80 to-background/30"
+                  delay={200}
+                >
                   <p className="text-lg">Revenue share for referred clients</p>
-                </div>
+                </SolutionCard>
                 
-                <div className="group bg-background/80 p-8 rounded-xl hover:bg-background transition-colors">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <Layers className="h-6 w-6" />
-                  </div>
+                <SolutionCard 
+                  icon={<Layers className="h-6 w-6" />}
+                  gradient="from-background/80 to-background/30"
+                  delay={300}
+                >
                   <p className="text-lg">Dedicated support + priority access to features</p>
-                </div>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>
