@@ -1,121 +1,75 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Shield, Building, Server, Users, CheckCircle } from 'lucide-react';
-import ScrollReveal from '@/components/ScrollReveal';
-import AnimatedText from '@/components/AnimatedText';
+import { Card, CardContent } from '@/components/ui/card';
+import { Building, Shield, Users, ArrowRight } from 'lucide-react';
+import Navbar from '@/components/Navbar';
 
 const Enterprise = () => {
+  useEffect(() => {
+    document.title = 'Enterprise Solutions - ACI.dev';
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen pt-24">
-      <section className="py-20">
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      
+      <div className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <AnimatedText
-                text="Enterprise Solutions"
-                tag="h1"
-                className="text-4xl md:text-5xl font-bold mb-4"
-                animationType="gradient"
-              />
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
-                Empower your enterprise with secure, scalable AI agents that integrate with your existing systems.
-              </p>
-            </div>
-          </ScrollReveal>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
-            <ScrollReveal direction="left">
-              <div className="space-y-8">
-                <h2 className="text-3xl font-bold">Transform Your Enterprise with AI Agents</h2>
-                <p className="text-lg text-muted-foreground">
-                  Our enterprise solutions provide secure, reliable, and scalable AI agent infrastructure that connects to your existing tools, databases, and systems. Build AI agents that respect your organization's security policies and compliance requirements.
-                </p>
-                <div className="space-y-4">
-                  {[
-                    "Secure integration with enterprise systems",
-                    "Customizable authentication workflows",
-                    "SOC 2, GDPR, and HIPAA compliant",
-                    "Single Sign-On (SSO) and SAML support",
-                    "Dedicated support and implementation assistance"
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-4">
-                  <Button size="lg" className="rounded-md">
-                    Contact Enterprise Sales <ExternalLink className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </ScrollReveal>
-            
-            <ScrollReveal direction="right">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl">
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-blue-500/20 flex items-center justify-center">
-                  <Building className="h-24 w-24 text-primary opacity-80" />
-                </div>
-                <div className="absolute inset-0 border border-primary/20 rounded-xl pointer-events-none"></div>
-              </div>
-            </ScrollReveal>
+          <div className="text-center mb-16">
+            <h1 className="text-4xl font-bold mb-6">Enterprise Solutions</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Secure, scalable AI agent infrastructure for enterprise organizations
+            </p>
           </div>
-          
-          <div className="mt-24">
-            <ScrollReveal>
-              <h2 className="text-3xl font-bold text-center mb-12">Enterprise Features</h2>
-            </ScrollReveal>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: <Shield className="h-10 w-10" />,
-                  title: "Enterprise-grade Security",
-                  description: "End-to-end encryption, role-based access control, and security best practices built-in."
-                },
-                {
-                  icon: <Server className="h-10 w-10" />,
-                  title: "Private Deployment",
-                  description: "Deploy in your own cloud environment or on-premises for complete control."
-                },
-                {
-                  icon: <Users className="h-10 w-10" />,
-                  title: "Team Collaboration",
-                  description: "Built-in tools for teams to collaborate on AI agent development and management."
-                },
-              ].map((feature, index) => (
-                <ScrollReveal key={index} delay={100 * index}>
-                  <div className="border border-border p-6 rounded-lg hover:shadow-lg transition-shadow duration-300 bg-card">
-                    <div className="mb-4 text-primary">
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground">
-                      {feature.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-          
-          <div className="mt-24 bg-muted p-8 rounded-lg">
-            <ScrollReveal>
-              <div className="text-center">
-                <h2 className="text-2xl font-bold mb-6">Request a Custom Enterprise Demo</h2>
-                <p className="text-muted-foreground mb-8">
-                  See how our platform can be tailored to your organization's specific needs with a personalized demo.
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-primary/20">
+              <CardContent className="pt-6">
+                <div className="mb-4 text-primary">
+                  <Building className="h-10 w-10" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Enterprise-Grade Security</h3>
+                <p className="text-muted-foreground">
+                  SOC 2 compliant infrastructure with SSO, role-based access controls, and audit logging.
                 </p>
-                <Button size="lg" variant="default">
-                  Schedule Demo
-                </Button>
-              </div>
-            </ScrollReveal>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20">
+              <CardContent className="pt-6">
+                <div className="mb-4 text-primary">
+                  <Shield className="h-10 w-10" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Data Privacy</h3>
+                <p className="text-muted-foreground">
+                  Keep your data private with dedicated environments and custom data retention policies.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20">
+              <CardContent className="pt-6">
+                <div className="mb-4 text-primary">
+                  <Users className="h-10 w-10" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Dedicated Support</h3>
+                <p className="text-muted-foreground">
+                  White-glove implementation and 24/7 technical support from our engineering team.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-16 text-center">
+            <Button className="px-6 py-6 rounded-full text-lg group relative overflow-hidden">
+              <span className="relative z-10">Contact Enterprise Sales</span>
+              <ArrowRight className="ml-2 h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
