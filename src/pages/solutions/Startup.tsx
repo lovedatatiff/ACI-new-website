@@ -77,7 +77,9 @@ const Startup = () => {
                   gradient="from-transparent to-transparent"
                   delay={100}
                   className="bg-transparent"
-                />
+                >
+                  <p>Connect to any API with our prebuilt library of integrations</p>
+                </SolutionCard>
 
                 <SolutionCard 
                   icon={<Zap className="h-8 w-8" />}
@@ -85,7 +87,9 @@ const Startup = () => {
                   gradient="from-transparent to-transparent"
                   delay={200}
                   className="bg-transparent"
-                />
+                >
+                  <p>Use your preferred model or easily switch between providers</p>
+                </SolutionCard>
 
                 <SolutionCard 
                   icon={<Shield className="h-8 w-8" />}
@@ -93,7 +97,9 @@ const Startup = () => {
                   gradient="from-transparent to-transparent"
                   delay={300}
                   className="bg-transparent"
-                />
+                >
+                  <p>Ensure reliable performance with automatic error handling</p>
+                </SolutionCard>
 
                 <SolutionCard 
                   icon={<Sparkles className="h-8 w-8" />}
@@ -101,7 +107,9 @@ const Startup = () => {
                   gradient="from-transparent to-transparent"
                   delay={400}
                   className="bg-transparent"
-                />
+                >
+                  <p>Get started at no cost and scale as your project grows</p>
+                </SolutionCard>
               </div>
             </div>
           </ScrollReveal>
