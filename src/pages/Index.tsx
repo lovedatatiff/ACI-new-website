@@ -1,4 +1,6 @@
+
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedText from '@/components/AnimatedText';
 import AnimatedParticles from '@/components/AnimatedParticles';
@@ -6,6 +8,7 @@ import PricingSection from '@/components/PricingSection';
 import { Button } from '@/components/ui/button';
 import { Github, ArrowRight, Code, Webhook, Shield, Paperclip, Search, Zap, ExternalLink, ChevronDown, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import NavigationDropdown from '@/components/NavigationDropdown';
 
 const tools = [
   { name: 'Gmail', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png' },
@@ -126,6 +129,49 @@ const tools = [
   { name: 'Fastly', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Fastly_logo.svg/1200px-Fastly_logo.svg.png' },
 ];
 
+const exploreItems = [
+  {
+    title: "Explore",
+    children: [
+      {
+        group: "Toolkits",
+        items: [
+          {
+            title: "AI Crypto Kit",
+            href: "/toolkits/ai-crypto-kit",
+            description: "Securely integrate blockchain functionality into your AI agents"
+          },
+          {
+            title: "Agent Secrets Manager",
+            href: "/toolkits/agent-secrets-manager",
+            description: "Securely store and manage credentials for your AI agents"
+          }
+        ]
+      },
+      {
+        group: "Solutions",
+        items: [
+          {
+            title: "Enterprise",
+            href: "/solutions/enterprise",
+            description: "Secure, scalable AI agents for enterprise"
+          },
+          {
+            title: "Startup",
+            href: "/solutions/startup",
+            description: "Accelerate your startup's growth with AI agents"
+          },
+          {
+            title: "Agency",
+            href: "/solutions/agency",
+            description: "Deliver cutting-edge AI solutions to your clients"
+          }
+        ]
+      }
+    ]
+  }
+];
+
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   
@@ -150,12 +196,14 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <span className={`text-xl font-bold transition-all duration-300 ${scrolled ? 'text-foreground' : 'text-primary'}`}>
+              <Link to="/" className={`text-xl font-bold transition-all duration-300 ${scrolled ? 'text-foreground' : 'text-primary'}`}>
                 ACI.dev
-              </span>
+              </Link>
             </div>
             
             <nav className="hidden md:flex items-center space-x-8">
+              <NavigationDropdown items={exploreItems} />
+              
               <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
                 Features
               </a>
