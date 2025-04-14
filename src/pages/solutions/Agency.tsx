@@ -35,31 +35,31 @@ const Agency = () => {
 
           {/* Why Agencies Choose ACI.dev */}
           <ScrollReveal>
-            <div className="mb-20 bg-gradient-to-br from-muted/20 via-muted/10 to-transparent rounded-3xl p-10">
+            <div className="mb-20 bg-gradient-to-br from-secondary/10 to-primary/5 p-10 rounded-3xl">
               <h2 className="text-3xl font-bold mb-10 text-center">Why Agencies Choose ACI.dev</h2>
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="flex items-start gap-5 p-6 bg-background rounded-xl shadow-sm">
+                <div className="flex items-start gap-5">
                   <div className="mt-1 text-primary">
                     <Users className="h-6 w-6" />
                   </div>
                   <p className="text-lg">Multi-tenant auth support for managing multiple clients</p>
                 </div>
                 
-                <div className="flex items-start gap-5 p-6 bg-background rounded-xl shadow-sm">
+                <div className="flex items-start gap-5">
                   <div className="mt-1 text-primary">
                     <Layers className="h-6 w-6" />
                   </div>
                   <p className="text-lg">Prebuilt connectors for 250+ tools (Slack, Gmail, Salesforce, etc.)</p>
                 </div>
                 
-                <div className="flex items-start gap-5 p-6 bg-background rounded-xl shadow-sm">
+                <div className="flex items-start gap-5">
                   <div className="mt-1 text-primary">
                     <Layout className="h-6 w-6" />
                   </div>
                   <p className="text-lg">Reusable agent templates and custom workflows</p>
                 </div>
                 
-                <div className="flex items-start gap-5 p-6 bg-background rounded-xl shadow-sm">
+                <div className="flex items-start gap-5">
                   <div className="mt-1 text-primary">
                     <PieChart className="h-6 w-6" />
                   </div>
@@ -133,15 +133,15 @@ const Agency = () => {
             <div className="mb-20">
               <h2 className="text-3xl font-bold mb-10 text-center">Example Use Cases</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-gradient-to-b from-primary/5 to-transparent rounded-2xl p-8 border border-primary/10">
+                <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-8">
                   <p className="text-lg">Slack + CRM agents that follow up with leads</p>
                 </div>
                 
-                <div className="bg-gradient-to-b from-primary/5 to-transparent rounded-2xl p-8 border border-primary/10">
+                <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-8">
                   <p className="text-lg">AI onboarding bots that trigger tasks across Notion and ClickUp</p>
                 </div>
                 
-                <div className="bg-gradient-to-b from-primary/5 to-transparent rounded-2xl p-8 border border-primary/10">
+                <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-8">
                   <p className="text-lg">GPT-powered assistants that automate support ticketing</p>
                 </div>
               </div>
@@ -150,18 +150,18 @@ const Agency = () => {
 
           {/* Agency Partnership Program */}
           <ScrollReveal>
-            <div className="mb-20 bg-muted/30 rounded-3xl p-10">
+            <div className="mb-20 bg-gradient-to-br from-muted/20 via-muted/10 to-transparent rounded-3xl p-10">
               <h2 className="text-3xl font-bold mb-10 text-center">Agency Partnership Program</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-background p-8 rounded-xl shadow-sm">
+                <div className="bg-gradient-to-br from-background to-muted/5 p-8 rounded-xl">
                   <p className="text-lg">Co-marketing opportunities</p>
                 </div>
                 
-                <div className="bg-background p-8 rounded-xl shadow-sm">
+                <div className="bg-gradient-to-br from-background to-muted/5 p-8 rounded-xl">
                   <p className="text-lg">Revenue share for referred clients</p>
                 </div>
                 
-                <div className="bg-background p-8 rounded-xl shadow-sm">
+                <div className="bg-gradient-to-br from-background to-muted/5 p-8 rounded-xl">
                   <p className="text-lg">Dedicated support + priority access to features</p>
                 </div>
               </div>
