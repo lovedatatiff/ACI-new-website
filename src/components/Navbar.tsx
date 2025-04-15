@@ -21,6 +21,16 @@ const exploreItems = [
             title: "Agent Secrets Manager",
             href: "/toolkits/agent-secrets-manager",
             description: "Securely store and manage credentials for your AI agents"
+          },
+          {
+            title: "Unified MCP",
+            href: "/toolkits/unified-mcp",
+            description: "Unified server management for AI agents"
+          },
+          {
+            title: "Dynamic App Search",
+            href: "/toolkits/dynamic-app-search",
+            description: "Intelligent function and app discovery for AI agents"
           }
         ]
       },

@@ -1,13 +1,14 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
+  NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
@@ -58,19 +59,19 @@ const exploreItems = [
         group: "Solutions",
         items: [
           {
-            title: "AI Agent Development",
-            href: "/solutions/ai-agent-development",
-            description: "Develop and deploy AI agents for various applications"
+            title: "Enterprise",
+            href: "/solutions/enterprise",
+            description: "Secure, scalable AI agents for enterprise"
           },
           {
-            title: "AI Data Management",
-            href: "/solutions/ai-data-management",
-            description: "Manage and analyze AI data for better insights"
+            title: "Startup",
+            href: "/solutions/startup",
+            description: "Accelerate your startup's growth with AI agents"
           },
           {
-            title: "AI Security",
-            href: "/solutions/ai-security",
-            description: "Protect your AI agents from threats and vulnerabilities"
+            title: "Agency",
+            href: "/solutions/agency",
+            description: "Deliver cutting-edge AI solutions to your clients"
           }
         ]
       }
@@ -79,10 +80,13 @@ const exploreItems = [
 ];
 
 const NavigationDropdown: React.FC<NavigationDropdownProps> = ({ items }) => {
+  // Use the exploreItems directly instead of items prop to ensure we have the correct data
+  const menuItems = exploreItems;
+  
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        {items.map((item) => (
+        {menuItems.map((item) => (
           <NavigationMenuItem key={item.title}>
             <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
             <NavigationMenuContent>
