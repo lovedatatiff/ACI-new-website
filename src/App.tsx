@@ -4,7 +4,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AnimatedHome from "./pages/AnimatedHome";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AICryptoKit from "./pages/toolkits/AICryptoKit";
@@ -22,8 +21,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AnimatedHome />} />
-          <Route path="/old" element={<Index />} />
+          <Route path="/" element={<Index />} />
           <Route path="/toolkits/ai-crypto-kit" element={<AICryptoKit />} />
           <Route path="/toolkits/agent-secrets-manager" element={<AgentSecretsManager />} />
           <Route path="/solutions/enterprise" element={<Enterprise />} />

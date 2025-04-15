@@ -1,56 +1,53 @@
 
-import React from 'react';
+import React, { ReactNode } from 'react';
+import ScrollReveal from '@/components/ScrollReveal';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
 
-export interface SolutionCardProps {
-  icon?: React.ReactNode;
+interface SolutionCardProps {
+  icon: ReactNode;
   title?: string;
+  children: ReactNode;
   gradient?: string;
   delay?: number;
-  children: React.ReactNode;
   className?: string;
+  iconClassName?: string;
 }
 
-const SolutionCard = ({ 
-  icon, 
-  title, 
-  gradient = "from-primary/10 to-transparent", 
-  delay = 0, 
+const SolutionCard: React.FC<SolutionCardProps> = ({
+  icon,
+  title,
   children,
-  className 
-}: SolutionCardProps) => {
+  gradient = "from-primary/5 via-secondary/5 to-transparent",
+  delay = 0,
+  className,
+  iconClassName,
+}) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: delay * 0.001 }}
-      viewport={{ once: true }}
-      whileHover={{ 
-        scale: 1.03, 
-        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-        y: -5
-      }}
-      className={cn(
-        `p-6 rounded-xl bg-gradient-to-br ${gradient} border border-border/40 relative overflow-hidden group`,
-        className
-      )}
-    >
-      {icon && (
-        <motion.div 
-          className="mb-4 text-primary"
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          transition={{ type: 'spring', stiffness: 300 }}
-        >
+    <ScrollReveal delay={delay} direction="scale">
+      <div 
+        className={cn(
+          "p-6 rounded-xl overflow-hidden transition-all duration-300",
+          "hover:shadow-md hover:-translate-y-1 relative group",
+          `bg-gradient-to-br ${gradient}`,
+          className
+        )}
+      >
+        <div className={cn(
+          "inline-flex items-center justify-center p-3 mb-4",
+          "rounded-full bg-primary/10 text-primary transform transition-transform duration-300",
+          "group-hover:scale-110",
+          iconClassName
+        )}>
           {icon}
-        </motion.div>
-      )}
-      {title && <h3 className="text-xl font-semibold mb-2">{title}</h3>}
-      <div className="text-muted-foreground">
-        {children}
+        </div>
+        
+        {title && <h3 className="text-xl font-semibold mb-2">{title}</h3>}
+        
+        <div className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+          {children}
+        </div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-    </motion.div>
+    </ScrollReveal>
   );
 };
 
