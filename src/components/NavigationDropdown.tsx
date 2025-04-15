@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -25,6 +24,59 @@ interface NavigationDropdownProps {
     }[];
   }[];
 }
+
+const exploreItems = [
+  {
+    title: "Explore",
+    children: [
+      {
+        group: "Toolkits",
+        items: [
+          {
+            title: "AI Crypto Kit",
+            href: "/toolkits/ai-crypto-kit",
+            description: "Securely integrate blockchain functionality into your AI agents"
+          },
+          {
+            title: "Agent Secrets Manager",
+            href: "/toolkits/agent-secrets-manager",
+            description: "Securely store and manage credentials for your AI agents"
+          },
+          {
+            title: "Unified MCP",
+            href: "/toolkits/unified-mcp",
+            description: "Unified server management for AI agents"
+          },
+          {
+            title: "Dynamic App Search",
+            href: "/toolkits/dynamic-app-search",
+            description: "Intelligent function and app discovery for AI agents"
+          }
+        ]
+      },
+      {
+        group: "Solutions",
+        items: [
+          {
+            title: "AI Agent Development",
+            href: "/solutions/ai-agent-development",
+            description: "Develop and deploy AI agents for various applications"
+          },
+          {
+            title: "AI Data Management",
+            href: "/solutions/ai-data-management",
+            description: "Manage and analyze AI data for better insights"
+          },
+          {
+            title: "AI Security",
+            href: "/solutions/ai-security",
+            description: "Protect your AI agents from threats and vulnerabilities"
+          }
+        ]
+      }
+    ]
+  }
+];
 
 const NavigationDropdown: React.FC<NavigationDropdownProps> = ({ items }) => {
   return (
