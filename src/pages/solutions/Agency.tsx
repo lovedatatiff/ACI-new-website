@@ -19,15 +19,15 @@ const Agency = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
           <ScrollReveal>
-            <div className="text-center mb-24">
+            <div className="text-center mb-20">
               <h1 className="text-5xl font-bold mb-6 text-gradient">Build AI-Powered Workflows for Your Clients</h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 ACI.dev gives agencies and consultants the tools to create reusable, secure, and scalable AI automations for every client.
               </p>
               <div className="mt-10">
-                <Button className="px-6 py-6 rounded-full text-lg bg-primary hover:bg-primary/90 group">
-                  <span>Partner With Us</span>
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <Button className="px-6 py-6 rounded-full text-lg bg-primary/90 hover:bg-primary group relative overflow-hidden">
+                  <span className="relative z-10">Partner With Us</span>
+                  <ArrowRight className="ml-2 h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
             </div>
@@ -35,43 +35,35 @@ const Agency = () => {
 
           {/* Why Agencies Choose ACI.dev */}
           <ScrollReveal>
-            <div className="mb-24 bg-gradient-to-br from-secondary/10 to-primary/5 p-12 rounded-3xl">
-              <h2 className="text-3xl font-bold mb-12 text-center">Why Agencies Choose ACI.dev</h2>
-              <div className="grid md:grid-cols-2 gap-10">
+            <div className="mb-20 bg-gradient-to-br from-secondary/10 to-primary/5 p-10 rounded-3xl">
+              <h2 className="text-3xl font-bold mb-10 text-center">Why Agencies Choose ACI.dev</h2>
+              <div className="grid md:grid-cols-2 gap-8">
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Users className="h-6 w-6 text-primary" />
+                  <div className="mt-1 text-primary">
+                    <Users className="h-6 w-6" />
                   </div>
-                  <div>
-                    <p className="text-lg">Multi-tenant auth support for managing multiple clients</p>
-                  </div>
+                  <p className="text-lg">Multi-tenant auth support for managing multiple clients</p>
                 </div>
                 
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Layers className="h-6 w-6 text-primary" />
+                  <div className="mt-1 text-primary">
+                    <Layers className="h-6 w-6" />
                   </div>
-                  <div>
-                    <p className="text-lg">Prebuilt connectors for 250+ tools (Slack, Gmail, Salesforce, etc.)</p>
-                  </div>
+                  <p className="text-lg">Prebuilt connectors for 250+ tools (Slack, Gmail, Salesforce, etc.)</p>
                 </div>
                 
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Layout className="h-6 w-6 text-primary" />
+                  <div className="mt-1 text-primary">
+                    <Layout className="h-6 w-6" />
                   </div>
-                  <div>
-                    <p className="text-lg">Reusable agent templates and custom workflows</p>
-                  </div>
+                  <p className="text-lg">Reusable agent templates and custom workflows</p>
                 </div>
                 
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <PieChart className="h-6 w-6 text-primary" />
+                  <div className="mt-1 text-primary">
+                    <PieChart className="h-6 w-6" />
                   </div>
-                  <div>
-                    <p className="text-lg">White-label and rebranding options</p>
-                  </div>
+                  <p className="text-lg">White-label and rebranding options</p>
                 </div>
               </div>
             </div>
@@ -79,11 +71,11 @@ const Agency = () => {
 
           {/* Core Capabilities */}
           <ScrollReveal>
-            <div className="mb-24">
-              <h2 className="text-3xl font-bold mb-12 text-center">Core Capabilities</h2>
+            <div className="mb-20">
+              <h2 className="text-3xl font-bold mb-10 text-center">Core Capabilities</h2>
               <div className="grid md:grid-cols-3 gap-10">
-                <div className="space-y-6 bg-gradient-to-br from-primary/5 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 text-primary">
                     <Briefcase className="h-8 w-8" />
                   </div>
                   <h3 className="text-2xl font-semibold">Multi-Workspace Support</h3>
@@ -99,8 +91,8 @@ const Agency = () => {
                   </ul>
                 </div>
 
-                <div className="space-y-6 bg-gradient-to-br from-primary/5 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 text-primary">
                     <Users className="h-8 w-8" />
                   </div>
                   <h3 className="text-2xl font-semibold">Low-Lift Client Integrations</h3>
@@ -116,8 +108,8 @@ const Agency = () => {
                   </ul>
                 </div>
 
-                <div className="space-y-6 bg-gradient-to-br from-primary/5 to-transparent p-8 rounded-3xl">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 text-primary">
                     <Lightbulb className="h-8 w-8" />
                   </div>
                   <h3 className="text-2xl font-semibold">Expand Your Service Offering</h3>
@@ -138,18 +130,18 @@ const Agency = () => {
 
           {/* Example Use Cases */}
           <ScrollReveal>
-            <div className="mb-24">
-              <h2 className="text-3xl font-bold mb-12 text-center">Example Use Cases</h2>
+            <div className="mb-20">
+              <h2 className="text-3xl font-bold mb-10 text-center">Example Use Cases</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-8">
                   <p className="text-lg">Slack + CRM agents that follow up with leads</p>
                 </div>
                 
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-8">
                   <p className="text-lg">AI onboarding bots that trigger tasks across Notion and ClickUp</p>
                 </div>
                 
-                <div className="bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl p-8 hover:shadow-md transition-shadow">
+                <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-8">
                   <p className="text-lg">GPT-powered assistants that automate support ticketing</p>
                 </div>
               </div>
@@ -158,27 +150,18 @@ const Agency = () => {
 
           {/* Agency Partnership Program */}
           <ScrollReveal>
-            <div className="mb-24 bg-gradient-to-br from-accent/20 to-transparent rounded-3xl p-12">
-              <h2 className="text-3xl font-bold mb-12 text-center">Agency Partnership Program</h2>
+            <div className="mb-20 bg-gradient-to-br from-muted/20 via-muted/10 to-transparent rounded-3xl p-10">
+              <h2 className="text-3xl font-bold mb-10 text-center">Agency Partnership Program</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="group bg-background/80 p-8 rounded-xl hover:bg-background transition-colors">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <Users className="h-6 w-6" />
-                  </div>
+                <div className="bg-gradient-to-br from-background to-muted/5 p-8 rounded-xl">
                   <p className="text-lg">Co-marketing opportunities</p>
                 </div>
                 
-                <div className="group bg-background/80 p-8 rounded-xl hover:bg-background transition-colors">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <PieChart className="h-6 w-6" />
-                  </div>
+                <div className="bg-gradient-to-br from-background to-muted/5 p-8 rounded-xl">
                   <p className="text-lg">Revenue share for referred clients</p>
                 </div>
                 
-                <div className="group bg-background/80 p-8 rounded-xl hover:bg-background transition-colors">
-                  <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-secondary/30 text-secondary-foreground">
-                    <Layers className="h-6 w-6" />
-                  </div>
+                <div className="bg-gradient-to-br from-background to-muted/5 p-8 rounded-xl">
                   <p className="text-lg">Dedicated support + priority access to features</p>
                 </div>
               </div>
@@ -187,7 +170,7 @@ const Agency = () => {
 
           {/* CTA Section */}
           <ScrollReveal>
-            <div className="text-center bg-gradient-to-br from-primary/10 to-accent/5 p-12 rounded-3xl">
+            <div className="text-center bg-primary/5 p-12 rounded-3xl">
               <h2 className="text-3xl font-bold mb-6">Become an ACI-Certified Integrator</h2>
               <Button className="px-8 py-7 rounded-full text-lg bg-primary hover:bg-primary/90 group">
                 <span>Apply to Partner Program</span>
